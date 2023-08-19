@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  web:
+    container_name: "web"
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    env_file:
+      - ./web/.env
+    command: npm run dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./web/src:/home/web/src
+      - /home/web/node_modules/
+
