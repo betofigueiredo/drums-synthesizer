@@ -5,16 +5,26 @@ import { Howl } from "howler";
 
 const PlayButton = () => {
   const bpm = useAppSelector((state) => state.machine.bpm);
-  const [location, setLocation] = useState<number>(0);
+  const tracks = useAppSelector((state) => state.machine.tracks);
+  const [step, setStep] = useState<number>(1);
 
   const callback = useCallback(() => {
-    const sound = new Howl({
+    const snare = new Howl({
       src: ["/audio/acoustic-snare-06.wav"],
       volume: 1,
     });
-    sound.play();
-    setLocation((prevLocation) => prevLocation + 1);
-  }, []);
+    const kick = new Howl({
+      src: ["/audio/acoustic-kick-03.wav"],
+      volume: 1,
+    });
+    if (tracks.snare.steps[step]) {
+      snare.play();
+    }
+    if (tracks.kick.steps[step]) {
+      kick.play();
+    }
+    setStep(step + 1);
+  }, [step, tracks]);
 
   const delay = Math.round(60000 / bpm / 4);
 
@@ -26,12 +36,11 @@ const PlayButton = () => {
 
   function stop() {
     timer.stop();
-    setLocation(0);
+    setStep(1);
   }
 
   return (
     <div>
-      {location}
       <button type="button" onClick={start}>
         Play
       </button>

@@ -3,7 +3,7 @@ import PlayButton from "components/PlayButton";
 
 function App() {
   return (
-    <div>
+    <div className="container mx-auto">
       <Tracks />
       <PlayButton />
     </div>
