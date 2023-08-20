@@ -1,18 +1,11 @@
-import PlayButton from "./components/PlayButton/PlayButton";
+import Tracks from "components/Tracks/Tracks";
+import PlayButton from "components/PlayButton";
 
 function App() {
-  const tracks = [
-    { id: 1, name: "SNARE", audio: "" },
-    { id: 2, name: "HIHAT", audio: "" },
-    { id: 3, name: "KICK", audio: "" },
-  ];
-
   return (
     <div>
+      <Tracks />
       <PlayButton />
-      {tracks.map((track) => (
-        <div key={track.id}>{track.name}</div>
-      ))}
     </div>
   );
 }

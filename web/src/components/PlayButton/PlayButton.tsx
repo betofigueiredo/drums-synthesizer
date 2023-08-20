@@ -5,7 +5,7 @@ import { Howl } from "howler";
 
 const PlayButton = () => {
   const bpm = useAppSelector((state) => state.machine.bpm);
-  const [count, setCount] = useState<number>(1);
+  const [location, setLocation] = useState<number>(0);
 
   const callback = useCallback(() => {
     const sound = new Howl({
@@ -13,6 +13,7 @@ const PlayButton = () => {
       volume: 1,
     });
     sound.play();
+    setLocation((prevLocation) => prevLocation + 1);
   }, []);
 
   const delay = Math.round(60000 / bpm / 4);
@@ -25,10 +26,12 @@ const PlayButton = () => {
 
   function stop() {
     timer.stop();
+    setLocation(0);
   }
 
   return (
     <div>
+      {location}
       <button type="button" onClick={start}>
         Play
       </button>
