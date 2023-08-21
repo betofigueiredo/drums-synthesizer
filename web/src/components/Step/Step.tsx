@@ -1,6 +1,9 @@
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector, useAppDispatch } from "hooks/redux";
 import { ITrackType } from "types/machine";
-import { isStepActiveSelector } from "features/machine/machineSlice";
+import {
+  isStepActiveSelector,
+  updateStep,
+} from "features/machine/machineSlice";
 
 const Step = ({
   trackType,
@@ -9,6 +12,7 @@ const Step = ({
   trackType: ITrackType;
   stepNumber: number;
 }) => {
+  const dispatch = useAppDispatch();
   const isActive = useAppSelector((state) =>
     isStepActiveSelector(state.machine, trackType, stepNumber)
   );
@@ -17,7 +21,7 @@ const Step = ({
   if (isActive) bgColor = "bg-cyan-400";
 
   function tickClickHandler(stepNumber: number) {
-    console.log(stepNumber);
+    dispatch(updateStep({ trackType, step: stepNumber }));
   }
 
   return (

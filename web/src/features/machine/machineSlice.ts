@@ -36,13 +36,28 @@ export const machineSlice = createSlice({
       state.stepLocation = action.payload.stepLocation;
       state.isPlaying = action.payload.isPlaying;
     },
+    updateStep: (
+      state,
+      action: PayloadAction<{ trackType: ITrackType; step: number }>
+    ) => {
+      const isStepActive =
+        !!state.tracks[action.payload.trackType].steps[action.payload.step];
+      if (isStepActive) {
+        delete state.tracks[action.payload.trackType].steps[
+          action.payload.step
+        ];
+      } else {
+        state.tracks[action.payload.trackType].steps[action.payload.step] =
+          true;
+      }
+    },
     updateBpm: (state, action: PayloadAction<number>) => {
       state.bpm = action.payload;
     },
   },
 });
 
-export const { updateStepLocation } = machineSlice.actions;
+export const { updateStepLocation, updateStep } = machineSlice.actions;
 
 export const isStepActiveSelector = (
   state: MachineState,
