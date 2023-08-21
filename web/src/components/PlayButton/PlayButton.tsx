@@ -6,16 +6,19 @@ import { updateStepLocation } from "../../features/machine/machineSlice";
 const PlayButton = () => {
   const dispatch = useAppDispatch();
   const bpm = useAppSelector((state) => state.machine.bpm);
+  const blocks = useAppSelector((state) => state.machine.blocks);
   const [step, setStep] = useState<number>(0);
 
-  const callback = useCallback(() => {
-    dispatch(updateStepLocation({ isPlaying: true, stepLocation: step + 1 }));
-    setStep(step + 1);
-  }, [step, dispatch]);
+  const playerHandler = useCallback(() => {
+    const end = blocks * 4;
+    const nextStep = step === end ? 1 : step + 1;
+    dispatch(updateStepLocation({ isPlaying: true, stepLocation: nextStep }));
+    setStep(nextStep);
+  }, [step, dispatch, blocks]);
 
   const delay = Math.round(60000 / bpm / 4);
 
-  const timer = useTimer({ delay, fireOnStart: true }, callback);
+  const timer = useTimer({ delay, fireOnStart: true }, playerHandler);
 
   function start() {
     timer.start();
