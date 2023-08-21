@@ -1,6 +1,6 @@
 import { useAppSelector } from "hooks/redux";
 import { ITrackType } from "types/machine";
-import { isStepActiveSelector } from "../../features/machine/machineSlice";
+import { isStepActiveSelector } from "features/machine/machineSlice";
 
 const Step = ({
   trackType,

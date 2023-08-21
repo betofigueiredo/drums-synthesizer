@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { useAppSelector, useAppDispatch } from "hooks/redux";
 import { useTimer } from "react-use-precision-timer";
-import { updateStepLocation } from "../../features/machine/machineSlice";
+import { updateStepLocation } from "features/machine/machineSlice";
 
 const PlayButton = () => {
   const dispatch = useAppDispatch();
