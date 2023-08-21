@@ -1,30 +1,17 @@
 import { useState, useCallback } from "react";
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector, useAppDispatch } from "hooks/redux";
 import { useTimer } from "react-use-precision-timer";
-import { Howl } from "howler";
+import { updateStepLocation } from "../../features/machine/machineSlice";
 
 const PlayButton = () => {
+  const dispatch = useAppDispatch();
   const bpm = useAppSelector((state) => state.machine.bpm);
-  const tracks = useAppSelector((state) => state.machine.tracks);
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(0);
 
   const callback = useCallback(() => {
-    const snare = new Howl({
-      src: ["/audio/acoustic-snare-06.wav"],
-      volume: 1,
-    });
-    const kick = new Howl({
-      src: ["/audio/acoustic-kick-03.wav"],
-      volume: 1,
-    });
-    if (tracks.snare.steps[step]) {
-      snare.play();
-    }
-    if (tracks.kick.steps[step]) {
-      kick.play();
-    }
+    dispatch(updateStepLocation({ isPlaying: true, stepLocation: step + 1 }));
     setStep(step + 1);
-  }, [step, tracks]);
+  }, [step, dispatch]);
 
   const delay = Math.round(60000 / bpm / 4);
 
@@ -36,7 +23,8 @@ const PlayButton = () => {
 
   function stop() {
     timer.stop();
-    setStep(1);
+    dispatch(updateStepLocation({ isPlaying: false, stepLocation: 0 }));
+    setStep(0);
   }
 
   return (
