@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { ITrackType, MachineState } from "types/machine";
 
 const initialState: MachineState = {
-  bpm: 80,
+  bpm: 146,
   blocks: 4,
   isPlaying: false,
   stepLocation: 0,

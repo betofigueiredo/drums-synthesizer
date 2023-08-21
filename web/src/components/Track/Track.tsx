@@ -9,7 +9,7 @@ const Track = ({ track }: { track: ITrack }) => {
 
   return (
     <>
-      <li className="flex justify-between gap-x-6 py-5">
+      <li className="flex justify-between gap-x-6">
         <div className="flex min-w-0 gap-x-4">
           <div className="min-w-0 flex-auto">
             <p className="text-sm font-semibold leading-6 text-gray-900">
@@ -17,7 +17,7 @@ const Track = ({ track }: { track: ITrack }) => {
             </p>
           </div>
         </div>
-        <div className="">
+        <div>
           {blocksList.map((stepNumber) => (
             <Step
               key={stepNumber}
