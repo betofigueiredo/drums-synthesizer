@@ -20,7 +20,7 @@ const Step = ({
   let bgColor = Math.ceil(stepNumber / 4) % 2 === 0 ? "bg-[#181C27]" : "";
   if (isActive) bgColor = "bg-cyan-400";
 
-  function tickClickHandler(stepNumber: number) {
+  function tickClickHandler() {
     dispatch(updateStep({ trackType, step: stepNumber }));
   }
 
@@ -28,7 +28,7 @@ const Step = ({
     <button
       type="button"
       className={`w-12 h-12 m-0.5 rounded border-2 border-solid border-cyan-800 ${bgColor}`}
-      onClick={() => tickClickHandler(stepNumber)}
+      onClick={tickClickHandler}
     />
   );
 };
