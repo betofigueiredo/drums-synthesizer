@@ -1,4 +1,4 @@
-export type ITrackType = "snare" | "kick";
+export type ITrackType = "snare" | "kick" | "tom" | string;
 
 export type ITrack = {
   type: ITrackType;

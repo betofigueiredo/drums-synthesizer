@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import { ITrackType, MachineState } from "types/machine";
+import addTrackUseCase from "./useCases/addTrackUseCase";
+import updateStepLocationUseCase from "./useCases/updateStepLocationUseCase";
+import updateStepUseCase from "./useCases/updateStepUseCase";
+import updateBpmUseCase from "./useCases/updateBpmUseCase";
 
 const initialState: MachineState = {
   bpm: 146,
@@ -29,35 +32,15 @@ export const machineSlice = createSlice({
   name: "machine",
   initialState,
   reducers: {
-    updateStepLocation: (
-      state,
-      action: PayloadAction<{ isPlaying: boolean; stepLocation: number }>
-    ) => {
-      state.stepLocation = action.payload.stepLocation;
-      state.isPlaying = action.payload.isPlaying;
-    },
-    updateStep: (
-      state,
-      action: PayloadAction<{ trackType: ITrackType; step: number }>
-    ) => {
-      const isStepActive =
-        !!state.tracks[action.payload.trackType].steps[action.payload.step];
-      if (isStepActive) {
-        delete state.tracks[action.payload.trackType].steps[
-          action.payload.step
-        ];
-      } else {
-        state.tracks[action.payload.trackType].steps[action.payload.step] =
-          true;
-      }
-    },
-    updateBpm: (state, action: PayloadAction<number>) => {
-      state.bpm = action.payload;
-    },
+    addTrack: addTrackUseCase,
+    updateStepLocation: updateStepLocationUseCase,
+    updateStep: updateStepUseCase,
+    updateBpm: updateBpmUseCase,
   },
 });
 
-export const { updateStepLocation, updateStep } = machineSlice.actions;
+export const { addTrack, updateStepLocation, updateStep } =
+  machineSlice.actions;
 
 export const isStepActiveSelector = (
   state: MachineState,
