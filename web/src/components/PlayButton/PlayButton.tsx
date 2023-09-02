@@ -2,6 +2,8 @@ import { useState, useCallback } from "react";
 import { useAppSelector, useAppDispatch } from "hooks/redux";
 import { useTimer } from "react-use-precision-timer";
 import { updateStepLocation } from "features/machine/machineSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 
 const PlayButton = () => {
   const dispatch = useAppDispatch();
@@ -32,12 +34,23 @@ const PlayButton = () => {
 
   return (
     <div>
-      <button type="button" onClick={start}>
-        Play
-      </button>
-      <button type="button" onClick={stop}>
-        Stop
-      </button>
+      {timer.isStopped() ? (
+        <button
+          type="button"
+          onClick={start}
+          className="h-12 w-12 border-4 rounded border-gray-900 bg-green-300"
+        >
+          <FontAwesomeIcon icon={faPlay} />
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={stop}
+          className="h-12 w-12 border-4 rounded border-gray-900 bg-gray-700"
+        >
+          <FontAwesomeIcon icon={faStop} />
+        </button>
+      )}
     </div>
   );
 };

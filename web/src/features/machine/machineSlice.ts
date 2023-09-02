@@ -11,6 +11,41 @@ const initialState: MachineState = {
   isPlaying: false,
   stepLocation: 0,
   tracks: {
+    ride: {
+      type: "ride",
+      audioFile: "/audio/acoustic-ride-02.wav",
+      volume: 1,
+      muted: false,
+      steps: {},
+    },
+    "hi-hat": {
+      type: "hi-hat",
+      audioFile: "/audio/acoustic-closed-hat-12.wav",
+      volume: 1,
+      muted: false,
+      steps: {},
+    },
+    "tom-high": {
+      type: "tom-high",
+      audioFile: "/audio/acoustic-high-tom-12.wav",
+      volume: 1,
+      muted: false,
+      steps: {},
+    },
+    "tom-low": {
+      type: "tom-low",
+      audioFile: "/audio/acoustic-tom-low-06.wav",
+      volume: 1,
+      muted: false,
+      steps: {},
+    },
+    "tom-mid": {
+      type: "tom-mid",
+      audioFile: "/audio/acoustic-mid-tom-12.wav",
+      volume: 1,
+      muted: false,
+      steps: {},
+    },
     snare: {
       type: "snare",
       audioFile: "/audio/acoustic-snare-06.wav",

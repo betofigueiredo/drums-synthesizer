@@ -13,5 +13,5 @@ export type MachineState = {
   blocks: number;
   stepLocation: number;
   isPlaying: boolean;
-  tracks: { [key in ITrackType]: ITrack };
+  tracks: { [key: string]: ITrack };
 };

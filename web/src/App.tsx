@@ -1,12 +1,12 @@
 import Tracks from "components/Tracks/Tracks";
-import PlayButton from "components/PlayButton";
 import StepTracking from "components/StepTracking";
+import TopBar from "components/TopBar";
 
 function App() {
   return (
-    <div className="container mx-auto mt-44">
+    <div className="container mx-auto">
+      <TopBar />
       <Tracks />
-      <PlayButton />
       <StepTracking />
     </div>
   );
