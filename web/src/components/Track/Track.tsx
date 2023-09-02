@@ -17,11 +17,7 @@ const Track = ({ track }: { track: ITrack }) => {
         </div>
         <div className="flex min-w-0">
           {blocksList.map((stepNumber) => (
-            <Step
-              key={stepNumber}
-              trackType={track.type}
-              stepNumber={stepNumber}
-            />
+            <Step key={stepNumber} track={track} stepNumber={stepNumber} />
           ))}
         </div>
       </li>

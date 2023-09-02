@@ -1,33 +1,36 @@
+import { useMemo } from "react";
 import { useAppSelector, useAppDispatch } from "hooks/redux";
-import { ITrackType } from "types/machine";
+import { ITrack } from "types/machine";
 import {
   isStepActiveSelector,
   updateStep,
 } from "features/machine/machineSlice";
 
-const Step = ({
-  trackType,
-  stepNumber,
-}: {
-  trackType: ITrackType;
-  stepNumber: number;
-}) => {
+const Step = ({ track, stepNumber }: { track: ITrack; stepNumber: number }) => {
   const dispatch = useAppDispatch();
   const isActive = useAppSelector((state) =>
-    isStepActiveSelector(state.machine, trackType, stepNumber)
+    isStepActiveSelector(state.machine, track.type, stepNumber)
+  );
+  const audio = useMemo(
+    () => new Howl({ src: [track.audioFile] }),
+    [track.audioFile]
   );
 
-  let bgColor = Math.ceil(stepNumber / 4) % 2 === 0 ? "bg-[#181C27]" : "";
-  if (isActive) bgColor = "bg-cyan-400";
+  function getBgColor() {
+    let bgColor = Math.ceil(stepNumber / 4) % 2 === 0 ? "bg-[#181C27]" : "";
+    if (isActive) bgColor = "bg-cyan-400";
+    return bgColor;
+  }
 
   function tickClickHandler() {
-    dispatch(updateStep({ trackType, step: stepNumber }));
+    if (!isActive) audio.play();
+    dispatch(updateStep({ trackType: track.type, step: stepNumber }));
   }
 
   return (
     <button
       type="button"
-      className={`w-12 h-12 m-0.5 rounded border-2 border-solid border-cyan-800 ${bgColor}`}
+      className={`w-12 h-12 m-0.5 rounded border-2 border-solid border-cyan-800 ${getBgColor()}`}
       onClick={tickClickHandler}
     />
   );
