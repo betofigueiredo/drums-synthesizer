@@ -1,5 +1,4 @@
 import Tracks from "components/Tracks/Tracks";
-import StepTracking from "components/StepTracking";
 import TopBar from "components/TopBar";
 
 function App() {
@@ -7,7 +6,6 @@ function App() {
     <div className="container mx-auto">
       <TopBar />
       <Tracks />
-      <StepTracking />
     </div>
   );
 }
