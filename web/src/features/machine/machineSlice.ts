@@ -4,6 +4,7 @@ import addTrackUseCase from "./useCases/addTrackUseCase";
 import updateStepLocationUseCase from "./useCases/updateStepLocationUseCase";
 import updateStepUseCase from "./useCases/updateStepUseCase";
 import updateBpmUseCase from "./useCases/updateBpmUseCase";
+import muteTrackUseCase from "./useCases/muteTrackUseCase";
 
 const initialState: MachineState = {
   bpm: 146,
@@ -71,10 +72,11 @@ export const machineSlice = createSlice({
     updateStepLocation: updateStepLocationUseCase,
     updateStep: updateStepUseCase,
     updateBpm: updateBpmUseCase,
+    muteTrack: muteTrackUseCase,
   },
 });
 
-export const { addTrack, updateStepLocation, updateStep } =
+export const { addTrack, updateStepLocation, updateStep, muteTrack } =
   machineSlice.actions;
 
 export const isStepActiveSelector = (
