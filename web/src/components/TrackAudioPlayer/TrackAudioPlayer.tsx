@@ -12,11 +12,11 @@ const TrackAudioPlayer = ({ track }: { track: ITrack }) => {
       new Howl({
         src: [track.audioFile],
         volume: track.volume,
-      })
+      }),
     );
   }, [track]);
 
-  if (track.steps[stepLocation]) {
+  if (track.steps[stepLocation] && !track.muted) {
     audio?.play();
   }
 
