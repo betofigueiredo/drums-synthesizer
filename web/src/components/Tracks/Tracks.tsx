@@ -20,15 +20,16 @@ const Tracks = () => {
             <TrackControls key={track.type} track={track} />
           ))}
         </div>
-        <div className="col-span-10">
+        <div className="col-span-10 overflow-x-auto overflow-y-hidden">
           {tracksList.map((track) => (
             <TrackBeats key={track.type} track={track} />
           ))}
         </div>
-
-        <button type="button" onClick={addNewTrack}>
-          Add new track
-        </button>
+        <div className="col-span-12">
+          <button type="button" onClick={addNewTrack}>
+            Add new track
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const initialState: MachineState = {
       type: "hi-hat",
       audioFile: "/audio/acoustic-closed-hat-12.wav",
       volume: 1,
-      muted: false,
+      muted: true,
       steps: {},
     },
     "tom-high": {
@@ -80,7 +80,7 @@ export const { addTrack, updateStepLocation, updateStep } =
 export const isStepActiveSelector = (
   state: MachineState,
   track: ITrackType,
-  step: number
+  step: number,
 ): boolean => {
   return state?.tracks[track]?.steps[step] ?? false;
 };
