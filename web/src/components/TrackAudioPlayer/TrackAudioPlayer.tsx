@@ -16,9 +16,11 @@ const TrackAudioPlayer = ({ track }: { track: ITrack }) => {
     );
   }, [track]);
 
-  if (track.steps[stepLocation] && !track.muted) {
-    audio?.play();
-  }
+  useEffect(() => {
+    if (track.steps[stepLocation] && !track.muted) {
+      audio?.play();
+    }
+  }, [track.steps, stepLocation, track.muted, audio]);
 
   return null;
 };
