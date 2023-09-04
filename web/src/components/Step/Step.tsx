@@ -18,9 +18,10 @@ const Step = ({ track, stepNumber }: { track: ITrack; stepNumber: number }) => {
   );
 
   function getClassName() {
+    // TODO shadow
     let className = isActive
       ? "m-0.5 h-14 w-14 rounded-full border-[3px] border-solid border-cyan-300 bg-cyan-400 shadow-[0_0_6px_3px_rgb(34,211,238,40%)]"
-      : "m-0.5 h-14 w-14 rounded-full border-[3px] border-solid border-black shadow-[inset_0_1px_1px_0_rgb(255,255,255,7%)] hover:bg-gray-700";
+      : "m-0.5 h-14 w-14 rounded-full border-[3px] border-solid border-gray-900 shadow-[inset_0_1px_1px_0_rgb(255,255,255,7%)] hover:bg-gray-700";
     if (stepLocation === stepNumber && isActive && !track.muted) {
       className += " bg-cyan-300 shadow-[0_0_16px_9px_rgb(34,211,238,50%)]";
     }
