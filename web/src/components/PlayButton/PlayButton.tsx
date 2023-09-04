@@ -3,7 +3,8 @@ import { useAppSelector, useAppDispatch } from "hooks/redux";
 import { useTimer } from "react-use-precision-timer";
 import { updateStepLocation } from "features/machine/machineSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
+import { faPause, faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
+import Button from "components/ui/Button";
 
 const PlayButton = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,11 @@ const PlayButton = () => {
     timer.start();
   }
 
+  function pause() {
+    timer.pause();
+    dispatch(updateStepLocation({ isPlaying: false }));
+  }
+
   function stop() {
     timer.stop();
     dispatch(updateStepLocation({ isPlaying: false, stepLocation: 0 }));
@@ -33,24 +39,20 @@ const PlayButton = () => {
   }
 
   return (
-    <div>
-      {timer.isStopped() ? (
-        <button
-          type="button"
-          onClick={start}
-          className="h-12 w-12 border-4 rounded border-gray-900 bg-green-300"
-        >
+    <div className="flex gap-3">
+      {(timer.isPaused() || timer.isStopped()) && (
+        <Button color="green" onClick={start}>
           <FontAwesomeIcon icon={faPlay} />
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={stop}
-          className="h-12 w-12 border-4 rounded border-gray-900 bg-gray-700"
-        >
-          <FontAwesomeIcon icon={faStop} />
-        </button>
+        </Button>
       )}
+      {timer.isRunning() && (
+        <Button color="yellow" onClick={pause}>
+          <FontAwesomeIcon icon={faPause} />
+        </Button>
+      )}
+      <Button onClick={stop}>
+        <FontAwesomeIcon icon={faStop} />
+      </Button>
     </div>
   );
 };

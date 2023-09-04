@@ -7,9 +7,9 @@ export default {
     },
     extend: {
       colors: {
-        black: "#13161f", // 171B26
-        "gray-800": "#1b1e29", // 232732
-        "gray-900": "#161923", // 1E222D
+        "gray-800": "#26262E",
+        "gray-900": "#1A1A20",
+        "gray-950": "#0B0D10",
         // "cyan-400": "#4BBBCF",
         // "cyan-800": "#315970",
       },
