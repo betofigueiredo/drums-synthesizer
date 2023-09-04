@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, MouseEventHandler } from "react";
 
 const Button = ({
   size = "md",
@@ -30,7 +30,7 @@ const Button = ({
 type Props = {
   size?: "sm" | "md";
   color?: "default" | "green" | "yellow";
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   children: ReactElement;
 };
 

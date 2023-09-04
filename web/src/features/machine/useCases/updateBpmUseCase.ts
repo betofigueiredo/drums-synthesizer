@@ -3,9 +3,9 @@ import { MachineState } from "types/machine";
 
 const updateBpmUseCase = (
   state: MachineState,
-  action: PayloadAction<number>
+  action: PayloadAction<{ bpm: number }>,
 ) => {
-  state.bpm = action.payload;
+  state.bpm = action.payload.bpm;
 };
 
 export default updateBpmUseCase;

@@ -76,8 +76,13 @@ export const machineSlice = createSlice({
   },
 });
 
-export const { addTrack, updateStepLocation, updateStep, muteTrack } =
-  machineSlice.actions;
+export const {
+  addTrack,
+  updateStepLocation,
+  updateStep,
+  updateBpm,
+  muteTrack,
+} = machineSlice.actions;
 
 export const isStepActiveSelector = (
   state: MachineState,

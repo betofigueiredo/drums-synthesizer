@@ -1,3 +1,3 @@
-const TimeView = () => <div>timer and bpm</div>;
+const TimeView = () => <div>timer</div>;
 
 export default TimeView;
