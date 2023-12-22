@@ -5,13 +5,21 @@ export default {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
     },
+    colors: {
+      white: "#ffffff",
+      gray: {
+        700: '#373D50',
+      },
+      lime: {
+        300: "#E5F33C"
+      }
+    },
     extend: {
       colors: {
-        "gray-800": "#26262E",
-        "gray-900": "#1A1A20",
-        "gray-950": "#0B0D10",
-        // "cyan-400": "#4BBBCF",
-        // "cyan-800": "#315970",
+        background: {
+          main: "#2B2E43",
+          dark: "#27293E"
+        },
       },
     },
   },

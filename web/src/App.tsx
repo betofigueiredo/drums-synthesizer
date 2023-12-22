@@ -1,15 +1,24 @@
-import Tracks from "components/Tracks/Tracks";
-import TopBar from "components/TopBar";
+import NavigationBar from "components/NavigationBar";
+import StudioHeader from "components/StudioHeader";
+import StudioTimeline from "components/StudioTimeline";
 
 function App() {
   return (
-    <div className="container mx-auto mt-8">
-      <div className="lg container rounded-lg bg-gray-900 p-4">
-        <div className="mb-4 flex h-14 items-stretch rounded-lg bg-gray-800"></div>
-        <TopBar />
-        <Tracks />
+    <>
+      <NavigationBar />
+      <StudioHeader />
+      <StudioTimeline />
+
+      <div className="bg-background-dark relative h-screen w-full pb-24 pl-24 pt-56">
+        <div className="h-full w-full overflow-auto">
+          <p>asdasdasd</p>
+        </div>
       </div>
-    </div>
+
+      <div className="fixed bottom-0 left-0 h-24 w-full border-t border-gray-700 bg-background-main pl-24">
+        play bar
+      </div>
+    </>
   );
 }
 

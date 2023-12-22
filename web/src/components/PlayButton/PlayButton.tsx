@@ -21,6 +21,8 @@ const PlayButton = () => {
 
   const delay = Math.round(60000 / bpm / 4);
 
+  console.log(delay * step);
+
   const timer = useTimer({ delay, fireOnStart: true }, playerHandler);
 
   function start() {

@@ -12,6 +12,13 @@ const initialState: MachineState = {
   isPlaying: false,
   stepLocation: 0,
   tracks: {
+    crash: {
+      type: "crash",
+      audioFile: "/audio/acoustic-ride-02.wav",
+      volume: 1,
+      muted: false,
+      steps: {},
+    },
     ride: {
       type: "ride",
       audioFile: "/audio/acoustic-ride-02.wav",
@@ -19,29 +26,36 @@ const initialState: MachineState = {
       muted: false,
       steps: {},
     },
-    "hi-hat": {
-      type: "hi-hat",
+    "open-hi-hat": {
+      type: "open-hi-hat",
       audioFile: "/audio/acoustic-closed-hat-12.wav",
       volume: 1,
       muted: true,
       steps: {},
     },
-    "tom-high": {
-      type: "tom-high",
+    "closed-hi-hat": {
+      type: "closed-hi-hat",
+      audioFile: "/audio/acoustic-closed-hat-12.wav",
+      volume: 1,
+      muted: true,
+      steps: {},
+    },
+    "high-tom": {
+      type: "high-tom",
       audioFile: "/audio/acoustic-high-tom-12.wav",
       volume: 1,
       muted: false,
       steps: {},
     },
-    "tom-low": {
-      type: "tom-low",
+    "low-tom": {
+      type: "low-tom",
       audioFile: "/audio/acoustic-tom-low-06.wav",
       volume: 1,
       muted: false,
       steps: {},
     },
-    "tom-mid": {
-      type: "tom-mid",
+    "medium-tom": {
+      type: "medium-tom",
       audioFile: "/audio/acoustic-mid-tom-12.wav",
       volume: 1,
       muted: false,
