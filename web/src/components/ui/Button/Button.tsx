@@ -11,15 +11,15 @@ const Button = ({
     md: "h-12 w-12",
   };
   const colors = {
-    default: "bg-[#2F3340] hover:bg-gray-700",
-    yellow: "bg-[#E6B64C] hover:bg-[#F3C662]",
-    green: "bg-green-600 hover:bg-green-500",
+    default: "bg-[#373952] text-gray-400 hover:bg-gray-700",
+    yellow: "bg-[#E6B64C] text-background-dark hover:bg-[#F3C662]",
+    green: "bg-lime-300 text-background-dark hover:bg-lime-300",
   };
 
   return (
     <button
       type="button"
-      className={`${sizes[size]} rounded border border-solid border-black ${colors[color]} text-xs text-gray-100 shadow-[inset_0_1px_1px_0_rgb(255,255,255,7%)]`}
+      className={`${sizes[size]} border-slate-900 rounded border border-solid ${colors[color]} shadow-[inset_0_1px_1px_0_rgb(255,255,255,7%)]`}
       onClick={onClick}
     >
       {children}

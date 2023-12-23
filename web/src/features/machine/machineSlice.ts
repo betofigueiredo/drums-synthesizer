@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ITrackType, MachineState } from "types/machine";
+import { MachineState } from "types/machine";
 import addTrackUseCase from "./useCases/addTrackUseCase";
 import updateStepLocationUseCase from "./useCases/updateStepLocationUseCase";
 import updateStepUseCase from "./useCases/updateStepUseCase";
@@ -14,6 +14,7 @@ const initialState: MachineState = {
   tracks: {
     crash: {
       type: "crash",
+      name: "Crash",
       audioFile: "/audio/acoustic-ride-02.wav",
       volume: 1,
       muted: false,
@@ -21,6 +22,7 @@ const initialState: MachineState = {
     },
     ride: {
       type: "ride",
+      name: "Ride",
       audioFile: "/audio/acoustic-ride-02.wav",
       volume: 1,
       muted: false,
@@ -28,6 +30,7 @@ const initialState: MachineState = {
     },
     "open-hi-hat": {
       type: "open-hi-hat",
+      name: "Open Hi Hat",
       audioFile: "/audio/acoustic-closed-hat-12.wav",
       volume: 1,
       muted: true,
@@ -35,6 +38,7 @@ const initialState: MachineState = {
     },
     "closed-hi-hat": {
       type: "closed-hi-hat",
+      name: "Closed Hi Hat",
       audioFile: "/audio/acoustic-closed-hat-12.wav",
       volume: 1,
       muted: true,
@@ -42,6 +46,7 @@ const initialState: MachineState = {
     },
     "high-tom": {
       type: "high-tom",
+      name: "High tom",
       audioFile: "/audio/acoustic-high-tom-12.wav",
       volume: 1,
       muted: false,
@@ -49,6 +54,7 @@ const initialState: MachineState = {
     },
     "low-tom": {
       type: "low-tom",
+      name: "Low tom",
       audioFile: "/audio/acoustic-tom-low-06.wav",
       volume: 1,
       muted: false,
@@ -56,6 +62,7 @@ const initialState: MachineState = {
     },
     "medium-tom": {
       type: "medium-tom",
+      name: "Medium tom",
       audioFile: "/audio/acoustic-mid-tom-12.wav",
       volume: 1,
       muted: false,
@@ -63,6 +70,7 @@ const initialState: MachineState = {
     },
     snare: {
       type: "snare",
+      name: "Snare",
       audioFile: "/audio/acoustic-snare-06.wav",
       volume: 1,
       muted: false,
@@ -70,6 +78,7 @@ const initialState: MachineState = {
     },
     kick: {
       type: "kick",
+      name: "Kick",
       audioFile: "/audio/acoustic-kick-03.wav",
       volume: 1,
       muted: false,
@@ -100,7 +109,7 @@ export const {
 
 export const isStepActiveSelector = (
   state: MachineState,
-  track: ITrackType,
+  track: string,
   step: number,
 ): boolean => {
   return state?.tracks[track]?.steps[step] ?? false;

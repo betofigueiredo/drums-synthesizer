@@ -1,7 +1,6 @@
-export type ITrackType = "snare" | "kick" | "tom" | string;
-
 export type ITrack = {
-  type: ITrackType;
+  type: string;
+  name: string;
   audioFile: string;
   volume: number;
   muted: boolean;

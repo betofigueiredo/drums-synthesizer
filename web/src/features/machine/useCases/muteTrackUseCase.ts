@@ -1,9 +1,9 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ITrackType, MachineState } from "types/machine";
+import { MachineState } from "types/machine";
 
 const muteTrackUseCase = (
   state: MachineState,
-  action: PayloadAction<{ trackType: ITrackType }>,
+  action: PayloadAction<{ trackType: string }>,
 ) => {
   state.tracks[action.payload.trackType].muted =
     !state.tracks[action.payload.trackType].muted;

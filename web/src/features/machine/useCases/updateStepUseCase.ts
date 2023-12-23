@@ -1,9 +1,9 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ITrackType, MachineState } from "types/machine";
+import { MachineState } from "types/machine";
 
 const updateStepUseCase = (
   state: MachineState,
-  action: PayloadAction<{ trackType: ITrackType; step: number }>
+  action: PayloadAction<{ trackType: string; step: number }>,
 ) => {
   const isStepActive =
     !!state.tracks[action.payload.trackType].steps[action.payload.step];
