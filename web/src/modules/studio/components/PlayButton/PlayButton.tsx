@@ -4,7 +4,7 @@ import { useTimer } from "react-use-precision-timer";
 import { updateStepLocation } from "features/machine/machineSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
-import Button from "components/ui/Button";
+import Button from "modules/shared/components/ui/Button";
 
 const PlayButton = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ const PlayButton = () => {
 
   const delay = Math.round(60000 / bpm / 4);
 
-  console.log(delay * step);
+  // console.log(delay * step);
 
   const timer = useTimer({ delay, fireOnStart: true }, playerHandler);
 

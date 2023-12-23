@@ -5,7 +5,9 @@ const PlayBeat = ({ stepNumber }: { stepNumber: number }) => {
   const isActive = stepLocation === stepNumber;
 
   function getClassName() {
-    return "relative m-1 pt-2 w-12 text-sm";
+    let className = "relative m-1 pt-2 pb-3 w-12 text-sm border-b-2";
+    className += isActive ? " border-lime-300" : " border-transparent";
+    return className;
   }
 
   return (
