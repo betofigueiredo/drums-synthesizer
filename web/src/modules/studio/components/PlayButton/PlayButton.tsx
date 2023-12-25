@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
-import { useAppSelector, useAppDispatch } from "hooks/redux";
+import { useAppSelector, useAppDispatch } from "modules/shared/hooks/redux";
 import { useTimer } from "react-use-precision-timer";
-import { updateStepLocation } from "features/machine/machineSlice";
+import { updateStepLocation } from "modules/studio/features/machine/machineSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import Button from "modules/shared/components/ui/Button";

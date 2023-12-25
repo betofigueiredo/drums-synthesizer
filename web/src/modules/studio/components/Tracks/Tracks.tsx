@@ -1,5 +1,5 @@
-import { useAppSelector, useAppDispatch } from "hooks/redux";
-import { addTrack } from "features/machine/machineSlice";
+import { useAppSelector, useAppDispatch } from "modules/shared/hooks/redux";
+import { addTrack } from "modules/studio/features/machine/machineSlice";
 import TrackControls from "modules/studio/components/TrackControls";
 import TrackBeats from "modules/studio/components/TrackBeats";
 

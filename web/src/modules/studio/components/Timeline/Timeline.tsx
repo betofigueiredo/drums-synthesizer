@@ -1,4 +1,4 @@
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector } from "modules/shared/hooks/redux";
 import PlayBeat from "./PlayBeat";
 
 const Timeline = () => {

@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
-import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { updateBpm } from "features/machine/machineSlice";
+import { useAppDispatch, useAppSelector } from "modules/shared/hooks/redux";
+import { updateBpm } from "modules/studio/features/machine/machineSlice";
 
 const Bpm = () => {
   const dispatch = useAppDispatch();

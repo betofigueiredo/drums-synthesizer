@@ -1,10 +1,10 @@
 import { useMemo } from "react";
-import { useAppSelector, useAppDispatch } from "hooks/redux";
+import { useAppSelector, useAppDispatch } from "modules/shared/hooks/redux";
 import { ITrack } from "types/machine";
 import {
   isStepActiveSelector,
   updateStep,
-} from "features/machine/machineSlice";
+} from "modules/studio/features/machine/machineSlice";
 
 const Step = ({ track, stepNumber }: { track: ITrack; stepNumber: number }) => {
   const dispatch = useAppDispatch();

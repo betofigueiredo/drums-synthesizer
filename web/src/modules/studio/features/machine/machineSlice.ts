@@ -7,6 +7,18 @@ import updateBpmUseCase from "./useCases/updateBpmUseCase";
 import muteTrackUseCase from "./useCases/muteTrackUseCase";
 
 const initialState: MachineState = {
+  selectedKit: {
+    id: "83174715-8da1-4269-abc3-dab0e4656e24",
+    name: "Basic Kit",
+    tracks: [
+      {
+        id: "29d41dc9-c89c-4187-99eb-746a2fda4faf",
+        type: "snare",
+        name: "Snare",
+        audio: "/audio/file.mp3",
+      },
+    ],
+  },
   bpm: 146,
   blocks: 4,
   isPlaying: false,

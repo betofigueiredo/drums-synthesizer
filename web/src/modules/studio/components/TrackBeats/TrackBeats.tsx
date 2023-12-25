@@ -1,4 +1,4 @@
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector } from "modules/shared/hooks/redux";
 import { ITrack } from "types/machine";
 import Step from "modules/studio/components/Step";
 

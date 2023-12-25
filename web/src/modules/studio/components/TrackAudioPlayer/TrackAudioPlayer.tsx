@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector } from "modules/shared/hooks/redux";
 import { Howl } from "howler";
 import { ITrack } from "types/machine";
 

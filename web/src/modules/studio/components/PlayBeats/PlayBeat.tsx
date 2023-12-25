@@ -1,4 +1,4 @@
-import { useAppSelector } from "hooks/redux";
+import { useAppSelector } from "modules/shared/hooks/redux";
 
 const PlayBeat = ({ stepNumber }: { stepNumber: number }) => {
   const stepLocation = useAppSelector((state) => state.machine.stepLocation);
