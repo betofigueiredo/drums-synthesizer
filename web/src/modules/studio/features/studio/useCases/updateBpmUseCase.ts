@@ -1,8 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { MachineState } from "types/machine";
+import { StudioState } from "types/studio";
 
 const updateBpmUseCase = (
-  state: MachineState,
+  state: StudioState,
   action: PayloadAction<{ bpm: number }>,
 ) => {
   state.bpm = action.payload.bpm;

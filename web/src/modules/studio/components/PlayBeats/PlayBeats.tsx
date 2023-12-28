@@ -2,7 +2,7 @@ import { useAppSelector } from "modules/shared/hooks/redux";
 import PlayBeat from "./PlayBeat";
 
 const PlayBeats = () => {
-  const blocks = useAppSelector((state) => state.machine.blocks);
+  const blocks = useAppSelector((state) => state.studio.blocks);
   const blocksList = Array.from({ length: blocks * 4 }, (_, idx) => idx + 1);
 
   return (

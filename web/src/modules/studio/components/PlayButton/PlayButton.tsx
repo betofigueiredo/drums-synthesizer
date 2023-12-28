@@ -1,15 +1,15 @@
 import { useState, useCallback } from "react";
 import { useAppSelector, useAppDispatch } from "modules/shared/hooks/redux";
 import { useTimer } from "react-use-precision-timer";
-import { updateStepLocation } from "modules/studio/features/machine/machineSlice";
+import { updateStepLocation } from "modules/studio/features/studio/studioSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import Button from "modules/shared/components/ui/Button";
 
 const PlayButton = () => {
   const dispatch = useAppDispatch();
-  const bpm = useAppSelector((state) => state.machine.bpm);
-  const blocks = useAppSelector((state) => state.machine.blocks);
+  const bpm = useAppSelector((state) => state.studio.bpm);
+  const blocks = useAppSelector((state) => state.studio.blocks);
   const [step, setStep] = useState<number>(0);
 
   const playerHandler = useCallback(() => {

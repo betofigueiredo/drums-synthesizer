@@ -1,12 +1,12 @@
 import { useAppSelector, useAppDispatch } from "modules/shared/hooks/redux";
-import { addTrack } from "modules/studio/features/machine/machineSlice";
+import { addTrack } from "modules/studio/features/studio/studioSlice";
 import TrackControls from "modules/studio/components/TrackControls";
 import TrackBeats from "modules/studio/components/TrackBeats";
 
 const Tracks = () => {
   const dispatch = useAppDispatch();
-  const tracks = useAppSelector((state) => state.machine.tracks);
-  const tracksList = Object.values(tracks);
+  const tracks = useAppSelector((state) => state.studio.tracks);
+  const tracksIds = Object.keys(tracks);
 
   function addNewTrack() {
     dispatch(addTrack({ trackType: "tom" }));
@@ -17,13 +17,13 @@ const Tracks = () => {
       <div className="h-full w-full overflow-auto">
         <div className="flex h-full">
           <div className="relative h-full w-64 flex-none border-r border-solid border-[#303647] p-6">
-            {tracksList.map((track) => (
-              <TrackControls key={track.type} track={track} />
+            {tracksIds.map((trackId) => (
+              <TrackControls key={trackId} track={tracks[trackId]} />
             ))}
           </div>
           <div className="relative flex-initial overflow-x-auto overflow-y-hidden p-6">
-            {tracksList.map((track) => (
-              <TrackBeats key={track.type} track={track} />
+            {tracksIds.map((trackId) => (
+              <TrackBeats key={trackId} track={tracks[trackId]} />
             ))}
           </div>
           {/* <div className="col-span-12">

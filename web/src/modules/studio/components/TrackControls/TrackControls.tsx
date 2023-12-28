@@ -3,8 +3,8 @@ import { useRef } from "react";
 import { useAppDispatch } from "modules/shared/hooks/redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGripLines } from "@fortawesome/free-solid-svg-icons";
-import { ITrack } from "types/machine";
-import { muteTrack } from "modules/studio/features/machine/machineSlice";
+import { ITrack } from "types/studio";
+import { muteTrack } from "modules/studio/features/studio/studioSlice";
 import TrackAudioPlayer from "modules/studio/components/TrackAudioPlayer";
 
 const TrackControls = ({ track }: { track: ITrack }) => {
@@ -12,7 +12,7 @@ const TrackControls = ({ track }: { track: ITrack }) => {
   const nodeRef = useRef(null);
 
   function muteHandler() {
-    dispatch(muteTrack({ trackType: track.type }));
+    dispatch(muteTrack({ trackId: track.id }));
   }
 
   const muteBtnClassName = track.muted

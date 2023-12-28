@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "modules/shared/hooks/redux";
 import { Howl } from "howler";
-import { ITrack } from "types/machine";
+import { ITrack } from "types/studio";
 
 const TrackAudioPlayer = ({ track }: { track: ITrack }) => {
-  const stepLocation = useAppSelector((state) => state.machine.stepLocation);
+  const stepLocation = useAppSelector((state) => state.studio.stepLocation);
   const [audio, setAudio] = useState<Howl | null>(null);
 
   useEffect(() => {
     setAudio(
       new Howl({
-        src: [track.audioFile],
+        src: [track.audio],
         volume: track.volume,
       }),
     );

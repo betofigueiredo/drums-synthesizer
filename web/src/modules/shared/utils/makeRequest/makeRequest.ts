@@ -26,13 +26,13 @@ mainInstance.interceptors.response.use((response) => {
   return response;
 });
 
-const get = (url: string, params = {}): Promise<unknown> =>
+const get = <T>(url: string, params = {}): Promise<T> =>
   mainInstance.get(url, { params });
-const post = (url: string, params = {}): Promise<unknown> =>
+const post = <T>(url: string, params = {}): Promise<T> =>
   mainInstance.post(url, params);
-const put = (url: string, params = {}): Promise<unknown> =>
+const put = <T>(url: string, params = {}): Promise<T> =>
   mainInstance.put(url, params);
-const del = (url: string): Promise<unknown> => mainInstance.delete(url);
+const del = <T>(url: string): Promise<T> => mainInstance.delete(url);
 
 const makeRequest = { get, post, put, del };
 

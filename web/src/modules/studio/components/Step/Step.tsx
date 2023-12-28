@@ -1,22 +1,22 @@
-import { useMemo } from "react";
+// import { useMemo } from "react";
 import { useAppSelector, useAppDispatch } from "modules/shared/hooks/redux";
-import { ITrack } from "types/machine";
+import { ITrack } from "types/studio";
 import {
   isStepActiveSelector,
   updateStep,
-} from "modules/studio/features/machine/machineSlice";
+} from "modules/studio/features/studio/studioSlice";
 
 const Step = ({ track, stepNumber }: { track: ITrack; stepNumber: number }) => {
   const dispatch = useAppDispatch();
-  const stepLocation = useAppSelector((state) => state.machine.stepLocation);
+  const stepLocation = useAppSelector((state) => state.studio.stepLocation);
   const isActive = useAppSelector((state) =>
-    isStepActiveSelector(state.machine, track.type, stepNumber),
+    isStepActiveSelector(state.studio, track.id, stepNumber),
   );
   const isPlaying = stepLocation === stepNumber && isActive && !track.muted;
-  const audio = useMemo(
-    () => new Howl({ src: [track.audioFile] }),
-    [track.audioFile],
-  );
+  // const audio = useMemo(
+  //   () => new Howl({ src: [track.audioFile] }),
+  //   [track.audioFile],
+  // );
 
   function getBackground() {
     if (isPlaying) {
@@ -50,8 +50,8 @@ const Step = ({ track, stepNumber }: { track: ITrack; stepNumber: number }) => {
   }
 
   function tickClickHandler() {
-    if (!isActive) audio.play();
-    dispatch(updateStep({ trackType: track.type, step: stepNumber }));
+    // if (!isActive) audio.play();
+    dispatch(updateStep({ trackId: track.id, step: stepNumber }));
   }
 
   return (

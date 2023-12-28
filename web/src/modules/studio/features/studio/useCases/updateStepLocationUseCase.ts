@@ -1,8 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { MachineState } from "types/machine";
+import { StudioState } from "types/studio";
 
 const updateStepLocationUseCase = (
-  state: MachineState,
+  state: StudioState,
   action: PayloadAction<{ isPlaying: boolean; stepLocation?: number }>,
 ) => {
   if (action.payload.stepLocation !== undefined) {

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import kitsReducer from "modules/kits/features/kits/kitsSlice";
 import userReducer from "modules/shared/features/user/userSlice";
-import machineReducer from "modules/studio/features/machine/machineSlice";
+import studioReducer from "modules/studio/features/studio/studioSlice";
 
 export const store = configureStore({
   reducer: {
     kits: kitsReducer,
-    machine: machineReducer,
+    studio: studioReducer,
     user: userReducer,
   },
 });

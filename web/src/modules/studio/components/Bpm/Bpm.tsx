@@ -1,10 +1,10 @@
 import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "modules/shared/hooks/redux";
-import { updateBpm } from "modules/studio/features/machine/machineSlice";
+import { updateBpm } from "modules/studio/features/studio/studioSlice";
 
 const Bpm = () => {
   const dispatch = useAppDispatch();
-  const bpm = useAppSelector((state) => state.machine.bpm);
+  const bpm = useAppSelector((state) => state.studio.bpm);
 
   function bpmHandler(
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,

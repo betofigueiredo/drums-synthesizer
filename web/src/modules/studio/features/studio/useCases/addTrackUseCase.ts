@@ -1,15 +1,16 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { MachineState } from "types/machine";
+import { StudioState } from "types/studio";
 
 const addTrackUseCase = (
-  state: MachineState,
+  state: StudioState,
   action: PayloadAction<{ trackType: string }>,
 ) => {
   const trackType = action.payload.trackType;
   const newTrack = {
+    id: trackType,
     type: trackType,
     name: trackType,
-    audioFile: "/audio/acoustic-snare-06.wav",
+    audio: "/audio/acoustic-snare-06.wav",
     volume: 1,
     muted: false,
     steps: {},

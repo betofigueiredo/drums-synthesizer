@@ -1,7 +1,7 @@
 import { useAppSelector } from "modules/shared/hooks/redux";
 
 const PlayBeat = ({ stepNumber }: { stepNumber: number }) => {
-  const stepLocation = useAppSelector((state) => state.machine.stepLocation);
+  const stepLocation = useAppSelector((state) => state.studio.stepLocation);
   const isActive = stepLocation === stepNumber;
 
   function getClassName() {
