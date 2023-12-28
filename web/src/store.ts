@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import kitsReducer from "modules/kits/features/kits/kitsSlice";
-import userReducer from "modules/shared/features/user/userSlice";
-import studioReducer from "modules/studio/features/studio/studioSlice";
+import kitsReducer from "features/kits/kitsSlice";
+import userReducer from "features/user/userSlice";
+import studioReducer from "features/studio/studioSlice";
 
 export const store = configureStore({
   reducer: {

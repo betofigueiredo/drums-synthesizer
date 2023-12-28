@@ -1,4 +1,4 @@
-import { Kit } from "modules/kits/features/kits/kitsSlice";
+import { Kit } from "features/kits/kitsSlice";
 
 export type ITrack = {
   id: string;

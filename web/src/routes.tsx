@@ -1,14 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-// routes
-import kitsRoutes from "modules/kits/routes";
-import studioRoutes from "modules/studio/routes";
-import socialRoutes from "modules/social/routes";
+// pages
+import Studio from "pages/Studio";
+import MySongs from "pages/MySongs";
+import Kits from "pages/Kits";
 
 const allRoutes = createBrowserRouter([
-  ...kitsRoutes,
-  ...studioRoutes,
-  ...socialRoutes,
+  { path: "/", element: <Studio /> },
+  { path: "/kits", element: <Kits /> },
+  { path: "/songs", element: <MySongs /> },
+  { path: "/studio", element: <Studio /> },
+  { path: "/studio/:songId", element: <Studio /> },
 ]);
 
 const AllRoutes = () => <RouterProvider router={allRoutes} />;
