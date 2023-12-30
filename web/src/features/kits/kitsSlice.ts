@@ -1,25 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import setKitsUseCase from "./useCases/setKitsUseCase";
+import { KitsState } from "types/kits";
 
-export type Track = {
-  id: string;
-  type: string;
-  name: string;
-  audio: string;
-};
-
-export type Kit = {
-  id: string;
-  name: string;
-  tracks: Track[];
-};
-
-export type Kits = {
-  list: Kit[];
-  loading?: boolean;
-};
-
-const initialState: Kits = {
+const initialState: KitsState = {
   list: [],
   loading: true,
 };

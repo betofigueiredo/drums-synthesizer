@@ -1,7 +1,8 @@
-import { Kit } from "features/kits/kitsSlice";
+import { Kit } from "types/kits";
 
-export type ITrack = {
+export type StudioTrack = {
   id: string;
+  order: number;
   type: string;
   name: string;
   audio: string;
@@ -11,10 +12,11 @@ export type ITrack = {
 };
 
 export type StudioState = {
+  songName: string;
   bpm: number;
   blocks: number;
   stepLocation: number;
   isPlaying: boolean;
-  tracks: { [key: string]: ITrack };
+  tracks: { [key: string]: StudioTrack };
   selectedKit: Kit | null;
 };

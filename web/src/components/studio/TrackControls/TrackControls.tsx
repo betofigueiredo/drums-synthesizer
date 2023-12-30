@@ -3,11 +3,11 @@ import { useRef } from "react";
 import { useAppDispatch } from "hooks/redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGripLines } from "@fortawesome/free-solid-svg-icons";
-import { ITrack } from "types/studio";
+import { StudioTrack } from "types/studio";
 import { muteTrack } from "features/studio/studioSlice";
 import TrackAudioPlayer from "components/studio/TrackAudioPlayer";
 
-const TrackControls = ({ track }: { track: ITrack }) => {
+const TrackControls = ({ track }: { track: StudioTrack }) => {
   const dispatch = useAppDispatch();
   const nodeRef = useRef(null);
 

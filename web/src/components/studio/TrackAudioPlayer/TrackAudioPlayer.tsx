@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "hooks/redux";
 import { Howl } from "howler";
-import { ITrack } from "types/studio";
+import { StudioTrack } from "types/studio";
 
-const TrackAudioPlayer = ({ track }: { track: ITrack }) => {
+const TrackAudioPlayer = ({ track }: { track: StudioTrack }) => {
   const stepLocation = useAppSelector((state) => state.studio.stepLocation);
   const [audio, setAudio] = useState<Howl | null>(null);
 

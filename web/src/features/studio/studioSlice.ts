@@ -6,8 +6,11 @@ import updateStepUseCase from "./useCases/updateStepUseCase";
 import updateBpmUseCase from "./useCases/updateBpmUseCase";
 import muteTrackUseCase from "./useCases/muteTrackUseCase";
 import setNewSongUseCase from "./useCases/setNewSongUseCase";
+import addBlocksUseCase from "./useCases/addBlocksUseCase";
+import removeLastBlockUseCase from "./useCases/removeLastBlockUseCase";
 
 const initialState: StudioState = {
+  songName: "",
   selectedKit: null,
   bpm: 100,
   blocks: 4,
@@ -21,6 +24,8 @@ export const studioSlice = createSlice({
   initialState,
   reducers: {
     addTrack: addTrackUseCase,
+    addBlocks: addBlocksUseCase,
+    removeLastBlock: removeLastBlockUseCase,
     updateStepLocation: updateStepLocationUseCase,
     updateStep: updateStepUseCase,
     updateBpm: updateBpmUseCase,
@@ -31,6 +36,8 @@ export const studioSlice = createSlice({
 
 export const {
   addTrack,
+  addBlocks,
+  removeLastBlock,
   updateStepLocation,
   updateStep,
   updateBpm,

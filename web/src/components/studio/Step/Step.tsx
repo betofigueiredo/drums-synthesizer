@@ -1,9 +1,15 @@
 // import { useMemo } from "react";
 import { useAppSelector, useAppDispatch } from "hooks/redux";
-import { ITrack } from "types/studio";
+import { StudioTrack } from "types/studio";
 import { isStepActiveSelector, updateStep } from "features/studio/studioSlice";
 
-const Step = ({ track, stepNumber }: { track: ITrack; stepNumber: number }) => {
+const Step = ({
+  track,
+  stepNumber,
+}: {
+  track: StudioTrack;
+  stepNumber: number;
+}) => {
   const dispatch = useAppDispatch();
   const stepLocation = useAppSelector((state) => state.studio.stepLocation);
   const isActive = useAppSelector((state) =>
