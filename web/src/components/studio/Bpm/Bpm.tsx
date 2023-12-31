@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { updateBpm } from "features/studio/studioSlice";
+import Input from "components/ui/Input";
 
 const Bpm = () => {
   const dispatch = useAppDispatch();
@@ -13,14 +14,8 @@ const Bpm = () => {
   }
 
   return (
-    <div className="flex items-center">
-      <input
-        type="number"
-        value={bpm}
-        onChange={bpmHandler}
-        className="w-28 rounded border-2 border-gray-950 bg-gray-900 p-2 text-center text-xl font-bold text-gray-300"
-      />
-      <div className="text pl-3 font-bold text-gray-300">BPM</div>
+    <div className="relative">
+      <Input type="number" label="Kit" value={bpm} onChange={bpmHandler} />
     </div>
   );
 };

@@ -10,7 +10,7 @@ const Tracks = () => {
   return (
     <div className="relative h-screen w-full bg-background-dark pb-24 pl-24 pt-56">
       <div className="h-full w-full overflow-auto">
-        <div className="flex h-full">
+        <div className="flex h-auto min-h-full">
           <div className="relative h-full w-64 flex-none border-r border-solid border-[#303647] p-6">
             {tracksIds.map((trackId) => (
               <TrackControls key={trackId} track={tracks[trackId]} />

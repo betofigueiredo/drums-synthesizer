@@ -1,17 +1,46 @@
 version: "3.3"
 
 services:
-  web:
-    container_name: "web"
+  drums_web:
+    container_name: "drums_web"
     build:
       context: ./web
       dockerfile: Dockerfile
     env_file:
-      - ./web/.env
+      - ./web/.env.development.local
     command: npm run dev
     ports:
-      - "5000:5000"
+      - "5050:5050"
     volumes:
-      - ./web/src:/home/web/src
-      - /home/web/node_modules/
+      - ./web/src:/home/drums_web/src
+      - /home/drums_web/node_modules/
 
+  drums_api:
+    container_name: "drums_api"
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env
+    ports:
+      - "8000:8000"
+    restart: always
+    volumes:
+      - ./api:/home/drums_api
+    depends_on:
+      - drums_db
+
+  drums_db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    env_file:
+      - ./api/.env
+    ports:
+      - '3306:3306'
+    volumes:
+      - drums_db:/var/lib/mysql
+
+volumes:
+  drums_db: ~

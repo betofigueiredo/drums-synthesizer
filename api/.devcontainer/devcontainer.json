@@ -1,0 +1,12 @@
+{
+    "name": "Python 3",
+    "context": "..",
+    "dockerFile": "../Dockerfile",
+    // Use 'settings' to set *default* container specific settings.json values on container create. 
+    // You can edit these settings after create using File > Preferences > Settings > Remote.
+    // Use 'appPort' to create a container with published ports. If the port isn't working, be sure
+    // your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
+    // Install flask and any other dependencies
+    // Comment out next line to run as root
+    "remoteUser": "vscode"
+}

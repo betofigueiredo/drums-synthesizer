@@ -8,6 +8,7 @@ import muteTrackUseCase from "./useCases/muteTrackUseCase";
 import setNewSongUseCase from "./useCases/setNewSongUseCase";
 import addBlocksUseCase from "./useCases/addBlocksUseCase";
 import removeLastBlockUseCase from "./useCases/removeLastBlockUseCase";
+import updateSongNameUseCase from "./useCases/updateSongNameUseCase";
 
 const initialState: StudioState = {
   songName: "",
@@ -31,6 +32,7 @@ export const studioSlice = createSlice({
     updateBpm: updateBpmUseCase,
     muteTrack: muteTrackUseCase,
     setNewSong: setNewSongUseCase,
+    updateSongName: updateSongNameUseCase,
   },
 });
 
@@ -43,6 +45,7 @@ export const {
   updateBpm,
   muteTrack,
   setNewSong,
+  updateSongName,
 } = studioSlice.actions;
 
 export const isStepActiveSelector = (
