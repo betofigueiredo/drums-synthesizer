@@ -14,8 +14,8 @@ const Bpm = () => {
   }
 
   return (
-    <div className="relative">
-      <Input type="number" label="Kit" value={bpm} onChange={bpmHandler} />
+    <div className="relative w-28">
+      <Input type="number" label="BPM" value={bpm} onChange={bpmHandler} />
     </div>
   );
 };

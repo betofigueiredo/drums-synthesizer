@@ -9,8 +9,10 @@ import setNewSongUseCase from "./useCases/setNewSongUseCase";
 import addBlocksUseCase from "./useCases/addBlocksUseCase";
 import removeLastBlockUseCase from "./useCases/removeLastBlockUseCase";
 import updateSongNameUseCase from "./useCases/updateSongNameUseCase";
+import setSavedSongUseCase from "./useCases/setSavedSongUseCase";
 
 const initialState: StudioState = {
+  songId: "",
   songName: "",
   selectedKit: null,
   bpm: 100,
@@ -32,6 +34,7 @@ export const studioSlice = createSlice({
     updateBpm: updateBpmUseCase,
     muteTrack: muteTrackUseCase,
     setNewSong: setNewSongUseCase,
+    setSavedSong: setSavedSongUseCase,
     updateSongName: updateSongNameUseCase,
   },
 });
@@ -45,6 +48,7 @@ export const {
   updateBpm,
   muteTrack,
   setNewSong,
+  setSavedSong,
   updateSongName,
 } = studioSlice.actions;
 

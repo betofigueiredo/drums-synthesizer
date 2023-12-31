@@ -12,6 +12,7 @@ export type StudioTrack = {
 };
 
 export type StudioState = {
+  songId?: string;
   songName: string;
   bpm: number;
   blocks: number;

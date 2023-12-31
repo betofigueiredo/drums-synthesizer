@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { setNewSong, setSavedSong } from "features/studio/studioSlice";
+import { StudioTrack } from "types/studio";
+import { Kit } from "types/kits";
+import handleLocalStorage from "utils/handleLocalStorage";
 import Layout from "components/shared/Layout";
 import Header from "components/studio/Header";
 import Timeline from "components/studio/Timeline";
 import ControlBar from "components/studio/ControlBar";
 import Tracks from "components/studio/Tracks";
-import { setNewSong } from "features/studio/studioSlice";
+import SaveSong from "components/studio/SaveSong";
 
 const Studio = () => {
   const { songId } = useParams();
@@ -41,16 +45,32 @@ const Studio = () => {
   // };
 
   useEffect(() => {
-    function getDataFromLocalStorage() {
+    function loadNewSong() {
       dispatch(setNewSong({ selectedKit: kits[0] }));
     }
 
-    function getSong() {
+    function loadSavedSong(savedSong: {
+      songName: string;
+      blocks: number;
+      bpm: number;
+      selectedKit: Kit;
+      tracks: { [k: string]: StudioTrack };
+    }) {
+      dispatch(setSavedSong(savedSong));
+    }
+
+    function getDataFromLocalStorage() {
+      const savedSong = handleLocalStorage.getData("song");
+      const hasSongSaved = !!savedSong?.selectedKit?.id;
+      return hasSongSaved ? loadSavedSong(savedSong) : loadNewSong();
+    }
+
+    function getSongFromApi() {
       // TODO:
     }
 
     function startStudio() {
-      return songId ? getSong() : getDataFromLocalStorage();
+      return songId ? getSongFromApi() : getDataFromLocalStorage();
     }
 
     function checkLoading() {
@@ -66,6 +86,7 @@ const Studio = () => {
       <Timeline />
       <Tracks />
       <ControlBar />
+      <SaveSong />
     </Layout>
   );
 };

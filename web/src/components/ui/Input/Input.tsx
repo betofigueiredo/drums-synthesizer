@@ -23,7 +23,7 @@ const Input = ({
         type={type}
         value={value}
         onChange={onChange}
-        className="w-72 rounded border border-gray-600 bg-[#363850] p-2 text-xl font-bold text-gray-300 outline-0 transition-all focus-visible:border-gray-300"
+        className="w-full rounded border border-gray-600 bg-[#363850] p-2 text-xl font-bold text-gray-300 outline-0 transition-all focus-visible:border-gray-300"
       />
     </>
   );
