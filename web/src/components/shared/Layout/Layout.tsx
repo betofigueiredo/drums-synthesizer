@@ -1,7 +1,8 @@
+import { Outlet } from "react-router-dom";
 import { useAppSelector } from "hooks/redux";
 import NavigationBar from "components/shared/NavigationBar";
 
-const Layout = ({ children }: { children: (string | JSX.Element)[] }) => {
+const Layout = () => {
   const isLoadingUser = useAppSelector((state) => state.user.loading);
   const isLoadingKits = useAppSelector((state) => state.kits.loading);
 
@@ -12,7 +13,7 @@ const Layout = ({ children }: { children: (string | JSX.Element)[] }) => {
   return (
     <>
       <NavigationBar />
-      {children}
+      <Outlet />
     </>
   );
 };

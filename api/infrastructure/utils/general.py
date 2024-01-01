@@ -1,4 +1,5 @@
 from flask import jsonify
+from typing import Any
 from pydantic import ValidationError
 
 
@@ -16,12 +17,13 @@ class General:
     def jsonify(self, data):
         return jsonify(data)
 
-    def validate_schema(self, schema, params):
+    def validate_schema(self, schema, params) -> dict[str, Any]:
         try:
             schema(**params)
-            return True
+            return {"error": None}
         except ValidationError as exc:
             return {
                 **exc.errors()[0],
-                "message": exc.errors()[0]["msg"],
-            }, 400
+                "error": exc.errors()[0]["msg"],
+                "field": exc.errors()[0]["loc"][0],
+            }

@@ -16,7 +16,6 @@ const SaveSong = () => {
 
   useEffect(() => {
     const saveOnLocalStorage = () => {
-      console.log("  Saved on LocalStorage!");
       handleLocalStorage.setData("song", {
         songName,
         selectedKit,
@@ -27,6 +26,7 @@ const SaveSong = () => {
     };
 
     const saveOnApi = () => {
+      // TODO:
       console.log("  Saved on API!");
     };
 

@@ -5,7 +5,6 @@ import { setNewSong, setSavedSong } from "features/studio/studioSlice";
 import { StudioTrack } from "types/studio";
 import { Kit } from "types/kits";
 import handleLocalStorage from "utils/handleLocalStorage";
-import Layout from "components/shared/Layout";
 import Header from "components/studio/Header";
 import Timeline from "components/studio/Timeline";
 import ControlBar from "components/studio/ControlBar";
@@ -81,13 +80,13 @@ const Studio = () => {
   }, [songId, kits, dispatch]);
 
   return (
-    <Layout>
+    <>
       <Header />
       <Timeline />
       <Tracks />
       <ControlBar />
       <SaveSong />
-    </Layout>
+    </>
   );
 };
 
