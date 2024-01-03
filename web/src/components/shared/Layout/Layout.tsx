@@ -11,10 +11,10 @@ const Layout = () => {
   }
 
   return (
-    <>
+    <div className="pl-24">
       <NavigationBar />
       <Outlet />
-    </>
+    </div>
   );
 };
 

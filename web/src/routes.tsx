@@ -3,6 +3,7 @@ import Layout from "components/shared/Layout";
 
 // pages
 import Home from "pages/Home";
+import SignUp from "pages/SignUp";
 import Studio from "pages/Studio";
 import MySongs from "pages/MySongs";
 import Kits from "pages/Kits";
@@ -14,6 +15,7 @@ const allRoutes = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/kits", element: <Kits /> },
+      { path: "/signup", element: <SignUp /> },
       { path: "/songs", element: <MySongs /> },
       { path: "/studio", element: <Studio /> },
       { path: "/studio/:songId", element: <Studio /> },

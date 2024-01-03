@@ -8,11 +8,10 @@ export default defineConfig({
   resolve: {
     alias: {
       components: "/src/components",
-      modules: "/src/modules",
+      constants: "/src/constants",
       features: "/src/features",
       hooks: "/src/hooks",
       pages: "/src/pages",
-      services: "/src/services",
       styles: "/src/styles",
       types: "/src/types",
       utils: "/src/utils",
