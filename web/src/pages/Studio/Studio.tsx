@@ -72,11 +72,13 @@ const Studio = () => {
       return songId ? getSongFromApi() : getDataFromLocalStorage();
     }
 
-    function checkLoading() {
-      if (kits.length) startStudio();
-    }
+    // function shouldSaveCurrentSong() {
+    //   if (userId && !songId && localStorage) {
+    //     // save to database
+    //   }
+    // }
 
-    checkLoading();
+    startStudio();
   }, [songId, kits, dispatch]);
 
   return (

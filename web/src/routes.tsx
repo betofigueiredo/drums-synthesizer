@@ -6,6 +6,7 @@ import Home from "pages/Home";
 import Studio from "pages/Studio";
 import MySongs from "pages/MySongs";
 import Kits from "pages/Kits";
+import BuyMeACoffee from "pages/BuyMeACoffee";
 
 const allRoutes = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const allRoutes = createBrowserRouter([
       { path: "/songs", element: <MySongs /> },
       { path: "/studio", element: <Studio /> },
       { path: "/studio/:songId", element: <Studio /> },
+      { path: "/buy-me-a-coffee", element: <BuyMeACoffee /> },
     ],
   },
 ]);

@@ -23,15 +23,23 @@ const Header = () => {
   return (
     <div className="fixed left-0 top-0 z-10 h-44 w-full bg-background-main pl-24">
       <div className="flex items-stretch">
-        <div className="h-44 pl-12 pr-12 pt-12">
+        <div className="h-44 border-r border-gray-700 pl-12 pr-12 pt-12">
           <Input label="Song name" value={songName} onChange={onChangeName} />
         </div>
-        <div className="h-44 pl-12 pr-12 pt-12">
+        <div className="h-44 border-r border-gray-700 pl-12 pr-12 pt-12">
           <Input
             label="Kit"
             value={selectedKit?.name || ""}
             onChange={onChangeName}
           />
+        </div>
+        <div className="h-44 pl-12 pr-12 pt-12">
+          <button
+            type="button"
+            className="h-11 rounded border border-solid border-lime-300 bg-lime-300 pl-6 pr-6 font-bold text-background-dark"
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>

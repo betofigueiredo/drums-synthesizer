@@ -4,13 +4,14 @@ import {
   faChartSimple,
   faDrum,
   faMicrophoneLines,
+  faMugHot,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavigationItem = ({ to, label, icon }: Props) => {
   const location = useLocation();
-  const currentLocation = location.pathname.split("/")?.[1] || "home";
-  const isActive = label.toLowerCase() === currentLocation;
-  const icons = { faChartSimple, faDrum, faMicrophoneLines };
+  const currentLocation = location.pathname || "/";
+  const isActive = to === currentLocation;
+  const icons = { faChartSimple, faDrum, faMicrophoneLines, faMugHot };
 
   function getIconCss() {
     let css =
@@ -22,7 +23,9 @@ const NavigationItem = ({ to, label, icon }: Props) => {
   }
 
   function getLabelCss() {
-    return isActive ? "w-full text-white font-semibold" : "w-full";
+    return isActive
+      ? "w-full text-white font-semibold text-sm"
+      : "w-full text-sm";
   }
 
   return (
@@ -43,7 +46,7 @@ const NavigationItem = ({ to, label, icon }: Props) => {
 type Props = {
   to: string;
   label: string;
-  icon: "faChartSimple" | "faDrum" | "faMicrophoneLines";
+  icon: "faChartSimple" | "faDrum" | "faMicrophoneLines" | "faMugHot";
 };
 
 export default NavigationItem;

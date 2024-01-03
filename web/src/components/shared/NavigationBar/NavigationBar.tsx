@@ -15,6 +15,11 @@ const NavigationBar = () => {
         <NavigationItem to="/studio" label="Studio" icon="faMicrophoneLines" />
         <NavigationItem to="/songs" label="Songs" icon="faChartSimple" />
         <NavigationItem to="/kits" label="Kits" icon="faDrum" />
+        <NavigationItem
+          to="/buy-me-a-coffee"
+          label="Buy me a coffee"
+          icon="faMugHot"
+        />
       </ul>
     </div>
   );
