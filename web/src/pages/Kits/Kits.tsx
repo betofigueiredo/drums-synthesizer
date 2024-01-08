@@ -1,7 +1,7 @@
 const Kits = () => {
   return (
     <>
-      <div className="flex items-center">Kits</div>;
+      <div className="flex items-center">Kits</div>
     </>
   );
 };

@@ -10,6 +10,7 @@ import addBlocksUseCase from "./useCases/addBlocksUseCase";
 import removeLastBlockUseCase from "./useCases/removeLastBlockUseCase";
 import updateSongNameUseCase from "./useCases/updateSongNameUseCase";
 import setSavedSongUseCase from "./useCases/setSavedSongUseCase";
+import updateSongIdUseCase from "./useCases/updateSongIdUseCase";
 
 const initialState: StudioState = {
   songId: "",
@@ -36,6 +37,7 @@ export const studioSlice = createSlice({
     setNewSong: setNewSongUseCase,
     setSavedSong: setSavedSongUseCase,
     updateSongName: updateSongNameUseCase,
+    updateSongId: updateSongIdUseCase,
   },
 });
 
@@ -50,6 +52,7 @@ export const {
   setNewSong,
   setSavedSong,
   updateSongName,
+  updateSongId,
 } = studioSlice.actions;
 
 export const isStepActiveSelector = (

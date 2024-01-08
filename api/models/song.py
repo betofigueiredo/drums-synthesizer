@@ -10,7 +10,7 @@ class Song(db.Model):
     bpm = db.Column(SMALLINT)
     blocks = db.Column(SMALLINT)
     tracks = db.Column(JSON)
-    kit = db.Column(db.String(256))
+    kit_id = db.Column(db.String(36))
     user_id = db.Column(db.String(36), db.ForeignKey("user.id"))
     user = relationship("User", back_populates="songs", lazy="subquery")
 
@@ -22,5 +22,5 @@ class Song(db.Model):
             "bpm": self.bpm,
             "blocks": self.blocks,
             "tracks": self.tracks,
-            "kit": self.kit,
+            "kit_id": self.kit_id,
         }

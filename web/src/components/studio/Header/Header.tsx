@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { updateSongName } from "features/studio/studioSlice";
 import Input from "components/ui/Input";
+import SaveSongButton from "../SaveSongButton";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +12,7 @@ const Header = () => {
   const onChangeName = (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
-    dispatch(updateSongName({ name: event.target.value }));
+    dispatch(updateSongName(event.target.value));
   };
 
   const onChangeKit = (
@@ -34,12 +35,7 @@ const Header = () => {
           />
         </div>
         <div className="h-44 pl-12 pr-12 pt-12">
-          <button
-            type="button"
-            className="h-11 rounded border border-solid border-lime-300 bg-lime-300 pl-6 pr-6 font-bold text-background-dark"
-          >
-            Save
-          </button>
+          <SaveSongButton />
         </div>
       </div>
     </div>

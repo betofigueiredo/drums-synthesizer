@@ -1,11 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { StudioState } from "types/studio";
 
-const updateSongNameUseCase = (
+const updateSongIdUseCase = (
   state: StudioState,
   action: PayloadAction<string>,
 ) => {
-  state.songName = action.payload;
+  state.songId = action.payload;
 };
 
-export default updateSongNameUseCase;
+export default updateSongIdUseCase;

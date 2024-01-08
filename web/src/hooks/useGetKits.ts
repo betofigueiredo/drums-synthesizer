@@ -1,6 +1,7 @@
 import { useAppDispatch } from "./redux";
 import { useSnackbar } from "notistack";
-import { Kit, setKits } from "features/kits/kitsSlice";
+import { setKits } from "features/kits/kitsSlice";
+import { Kit } from "types/kits";
 import makeRequest from "utils/makeRequest";
 
 type KitsResponse = { data: { kits: Kit[] } };

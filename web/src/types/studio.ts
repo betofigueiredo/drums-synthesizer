@@ -21,3 +21,16 @@ export type StudioState = {
   tracks: { [key: string]: StudioTrack };
   selectedKit: Kit | null;
 };
+
+export type Song = {
+  id?: string;
+  name: string;
+  bpm: number;
+  blocks: number;
+  tracks: { [key: string]: StudioTrack };
+  kitId: Kit | null;
+};
+
+export type SongResponse = {
+  data: { song: Song };
+};

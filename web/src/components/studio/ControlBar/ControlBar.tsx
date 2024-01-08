@@ -9,7 +9,7 @@ import {
   faRepeat,
   faStop,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "components/ui/Button";
+import SquareButton from "components/ui/SquareButton";
 import Bpm from "components/studio/Bpm";
 
 const ControlBar = () => {
@@ -67,18 +67,18 @@ const ControlBar = () => {
         <div className="border-r border-gray-700 p-7 pl-12 pr-9">
           <div className="flex gap-3">
             {(timer.isPaused() || timer.isStopped()) && (
-              <Button color="green" onClick={start}>
+              <SquareButton color="green" onClick={start}>
                 <FontAwesomeIcon icon={faPlay} />
-              </Button>
+              </SquareButton>
             )}
             {timer.isRunning() && (
-              <Button color="yellow" onClick={pause}>
+              <SquareButton color="yellow" onClick={pause}>
                 <FontAwesomeIcon icon={faPause} />
-              </Button>
+              </SquareButton>
             )}
-            <Button onClick={stop}>
+            <SquareButton onClick={stop}>
               <FontAwesomeIcon icon={faStop} />
-            </Button>
+            </SquareButton>
             <button
               type="button"
               onClick={toggleLoop}

@@ -4,6 +4,7 @@ from infrastructure.repositories.repository import Repository
 from infrastructure.middlewares.auth_middleware import token_required
 from infrastructure.core.database import db
 from use_cases.songs import (
+    create_song_use_case,
     get_songs_use_case,
 )
 
@@ -14,6 +15,30 @@ class SongsList(Resource):
         user_id = token_data.get("user_id") if token_data else None
         return get_songs_use_case(
             user_id=user_id,
+            utils=Utils(),
+            repository=Repository(db),
+        )
+
+    @token_required
+    def post(self, token_data):
+        user_id = token_data.get("user_id") if token_data else None
+        parser = reqparse.RequestParser()
+        parser.add_argument("name", type=str, required=True)
+        parser.add_argument("bpm", type=int, required=True)
+        parser.add_argument("blocks", type=int, required=True)
+        parser.add_argument("tracks", type=str, required=True)
+        parser.add_argument("kit_id", type=str, required=True)
+        args = parser.parse_args()
+        song = {
+            "name": args.name,
+            "bpm": args.bpm,
+            "blocks": args.blocks,
+            "tracks": args.tracks,
+            "kit_id": args.kit_id,
+        }
+        return create_song_use_case(
+            user_id=user_id,
+            song=song,
             utils=Utils(),
             repository=Repository(db),
         )
