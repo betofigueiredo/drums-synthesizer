@@ -1,5 +1,5 @@
 import pytest
-from .get_song_use_case import get_song_use_case
+from use_cases.songs.get_song_use_case import get_song_use_case
 from infrastructure.utils import Utils
 from infrastructure.repositories.mock.repository_mock import RepositoryMock
 from tests.helpers import helpers

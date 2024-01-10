@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartSimple,
@@ -9,7 +9,12 @@ import {
 
 const NavigationItem = ({ to, label, icon }: Props) => {
   const location = useLocation();
-  const currentLocation = location.pathname || "/";
+  const params = useParams<Record<string, string>>();
+  const currentLocation =
+    Object.values(params).reduce(
+      (path, param) => path?.replace("/" + param, ""),
+      location.pathname,
+    ) || "/";
   const isActive = to === currentLocation;
   const icons = { faChartSimple, faDrum, faMicrophoneLines, faMugHot };
 

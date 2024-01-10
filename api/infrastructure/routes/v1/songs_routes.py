@@ -7,6 +7,7 @@ from use_cases.songs import (
     create_song_use_case,
     get_songs_use_case,
     get_song_use_case,
+    update_song_use_case,
 )
 
 
@@ -30,7 +31,7 @@ class SongsList(Resource):
         parser.add_argument("tracks", type=str, required=True)
         parser.add_argument("kit_id", type=str, required=True)
         args = parser.parse_args()
-        song = {
+        data = {
             "name": args.name,
             "bpm": args.bpm,
             "blocks": args.blocks,
@@ -39,7 +40,7 @@ class SongsList(Resource):
         }
         return create_song_use_case(
             user_id=user_id,
-            song=song,
+            data=data,
             utils=Utils(),
             repository=Repository(db),
         )
@@ -52,6 +53,31 @@ class Song(Resource):
         return get_song_use_case(
             user_id=user_id,
             song_id=song_id,
+            utils=Utils(),
+            repository=Repository(db),
+        )
+
+    @token_required
+    def put(self, token_data, song_id):
+        user_id = token_data.get("user_id") if token_data else None
+        parser = reqparse.RequestParser()
+        parser.add_argument("name", type=str, required=True)
+        parser.add_argument("bpm", type=int, required=True)
+        parser.add_argument("blocks", type=int, required=True)
+        parser.add_argument("tracks", type=str, required=True)
+        parser.add_argument("kit_id", type=str, required=True)
+        args = parser.parse_args()
+        data = {
+            "name": args.name,
+            "bpm": args.bpm,
+            "blocks": args.blocks,
+            "tracks": args.tracks,
+            "kit_id": args.kit_id,
+        }
+        return update_song_use_case(
+            user_id=user_id,
+            song_id=song_id,
+            data=data,
             utils=Utils(),
             repository=Repository(db),
         )
