@@ -6,11 +6,11 @@ const updateStepUseCase = (
   action: PayloadAction<{ trackId: string; step: number }>,
 ) => {
   const isStepActive =
-    !!state.tracks[action.payload.trackId].steps[action.payload.step];
+    !!state.song.tracks[action.payload.trackId].steps[action.payload.step];
   if (isStepActive) {
-    delete state.tracks[action.payload.trackId].steps[action.payload.step];
+    delete state.song.tracks[action.payload.trackId].steps[action.payload.step];
   } else {
-    state.tracks[action.payload.trackId].steps[action.payload.step] = true;
+    state.song.tracks[action.payload.trackId].steps[action.payload.step] = true;
   }
 };
 

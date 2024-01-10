@@ -1,16 +1,16 @@
 import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { updateBpm } from "features/studio/studioSlice";
+import { updateSong } from "features/studio/studioSlice";
 import Input from "components/ui/Input";
 
 const Bpm = () => {
   const dispatch = useAppDispatch();
-  const bpm = useAppSelector((state) => state.studio.bpm);
+  const bpm = useAppSelector((state) => state.studio.song.bpm);
 
   function bpmHandler(
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) {
-    dispatch(updateBpm({ bpm: Number(event.target.value) }));
+    dispatch(updateSong({ bpm: Number(event.target.value) }));
   }
 
   return (

@@ -2,7 +2,7 @@ import { useAppSelector } from "hooks/redux";
 import PlayBeat from "./PlayBeat";
 
 const Timeline = () => {
-  const blocks = useAppSelector((state) => state.studio.blocks);
+  const blocks = useAppSelector((state) => state.studio.song.blocks);
   const blocksList = Array.from({ length: blocks * 4 }, (_, idx) => idx + 1);
 
   return (

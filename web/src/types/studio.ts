@@ -11,24 +11,19 @@ export type StudioTrack = {
   steps: { [key: number]: boolean };
 };
 
-export type StudioState = {
-  songId?: string;
-  songName: string;
-  bpm: number;
-  blocks: number;
-  stepLocation: number;
-  isPlaying: boolean;
-  tracks: { [key: string]: StudioTrack };
-  selectedKit: Kit | null;
-};
-
 export type Song = {
   id?: string;
   name: string;
   bpm: number;
   blocks: number;
   tracks: { [key: string]: StudioTrack };
-  kitId: Kit | null;
+  kit: Kit | null;
+};
+
+export type StudioState = {
+  song: Song;
+  stepLocation: number;
+  isPlaying: boolean;
 };
 
 export type SongResponse = {

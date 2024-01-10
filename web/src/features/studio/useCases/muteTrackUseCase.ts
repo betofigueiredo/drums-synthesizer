@@ -5,8 +5,8 @@ const muteTrackUseCase = (
   state: StudioState,
   action: PayloadAction<{ trackId: string }>,
 ) => {
-  state.tracks[action.payload.trackId].muted =
-    !state.tracks[action.payload.trackId].muted;
+  state.song.tracks[action.payload.trackId].muted =
+    !state.song.tracks[action.payload.trackId].muted;
 };
 
 export default muteTrackUseCase;

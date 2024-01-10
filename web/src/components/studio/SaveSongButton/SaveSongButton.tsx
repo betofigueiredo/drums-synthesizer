@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { useSnackbar } from "notistack";
-import { updateSongId } from "features/studio/studioSlice";
+import { updateSong } from "features/studio/studioSlice";
 import { SongResponse } from "types/studio";
 import checkUserIsLogged from "utils/checkUserIsLogged";
 import makeRequest from "utils/makeRequest";
@@ -13,14 +13,14 @@ const SaveSongButton = () => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [isSaving, setIsSaving] = useState(false);
-  const { songId, songName, selectedKit, bpm, blocks, tracks } = useAppSelector(
-    (state) => state.studio,
+  const { id, name, kit, bpm, blocks, tracks } = useAppSelector(
+    (state) => state.studio.song,
   );
   const isUserLogged = checkUserIsLogged();
 
   const onSuccess = (response: SongResponse) => {
     const songId = response.data.song?.id || "";
-    dispatch(updateSongId(songId));
+    dispatch(updateSong({ id: songId }));
     navigate(`/studio/${songId}`);
     setIsSaving(false);
   };
@@ -34,14 +34,15 @@ const SaveSongButton = () => {
 
   const saveToApi = () => {
     setIsSaving(true);
+    const song = {
+      name,
+      bpm,
+      blocks,
+      tracks: JSON.stringify(tracks),
+      kitId: kit?.id,
+    };
     makeRequest
-      .post<SongResponse>("/api/v1/songs", {
-        name: songName,
-        bpm: bpm,
-        blocks: blocks,
-        tracks: tracks,
-        kitId: selectedKit?.id,
-      })
+      .post<SongResponse>("/api/v1/songs", song)
       .then(onSuccess)
       .catch(onError);
   };
@@ -54,7 +55,7 @@ const SaveSongButton = () => {
     return isUserLogged ? saveToApi() : goToSignUp();
   };
 
-  if (songId) {
+  if (id) {
     return null;
   }
 

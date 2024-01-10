@@ -1,71 +1,56 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { setNewSong, setSavedSong } from "features/studio/studioSlice";
-import { StudioTrack } from "types/studio";
-import { Kit } from "types/kits";
+import { setNewSong, updateSong } from "features/studio/studioSlice";
+import { Song, SongResponse } from "types/studio";
+import makeRequest from "utils/makeRequest";
 import handleLocalStorage from "utils/handleLocalStorage";
 import Header from "components/studio/Header";
 import Timeline from "components/studio/Timeline";
 import ControlBar from "components/studio/ControlBar";
 import Tracks from "components/studio/Tracks";
-import SaveSong from "components/studio/SaveSong";
+import AutoSaveSong from "components/studio/AutoSaveSong";
 
 const Studio = () => {
   const { songId } = useParams();
   const dispatch = useAppDispatch();
   const kits = useAppSelector((state) => state.kits.list);
 
-  // const song = {
-  //   id: "eeb163c4-0178-4a99-8e61-d6b6fcbae9c0",
-  //   name: "My First Song",
-  //   bpm: 140,
-  //   blocks: 4,
-  //   kit: {
-  //     id: "83174715-8da1-4269-abc3-dab0e4656e24",
-  //     name: "Basic Kit",
-  //     tracks: [
-  //       {
-  //         id: "29d41dc9-c89c-4187-99eb-746a2fda4faf",
-  //         name: "Snare",
-  //         audio: "/audio/file.mp3",
-  //       },
-  //     ],
-  //   },
-  //   tracks: [
-  //     {
-  //       id: "29d41dc9-c89c-4187-99eb-746a2fda4faf",
-  //       volume: 1,
-  //       muted: false,
-  //       steps: [1, 4, 7, 11],
-  //       // steps: { 1: true, 4: true, 7: true, 11: true },
-  //     },
-  //   ],
-  // };
-
   useEffect(() => {
     function loadNewSong() {
-      dispatch(setNewSong({ selectedKit: kits[0] }));
+      dispatch(setNewSong({ kit: kits[0] }));
     }
 
-    function loadSavedSong(savedSong: {
-      songName: string;
-      blocks: number;
-      bpm: number;
-      selectedKit: Kit;
-      tracks: { [k: string]: StudioTrack };
-    }) {
-      dispatch(setSavedSong(savedSong));
+    function loadSavedSong(savedSong: Song) {
+      dispatch(updateSong(savedSong));
     }
 
     function getDataFromLocalStorage() {
       const savedSong = handleLocalStorage.getData("song");
-      const hasSongSaved = !!savedSong?.selectedKit?.id;
+      const hasSongSaved = !!savedSong?.kit?.id;
       return hasSongSaved ? loadSavedSong(savedSong) : loadNewSong();
     }
 
+    function onSuccess(response: SongResponse) {
+      const data = response.data.song;
+      const savedSong = {
+        id: data.id,
+        name: data.name,
+        bpm: data.bpm,
+        blocks: data.blocks,
+        kit: data.kit,
+        tracks: JSON.parse(String(data.tracks)),
+      };
+      loadSavedSong(savedSong);
+    }
+
+    function onError() {}
+
     function getSongFromApi() {
-      // TODO:
+      makeRequest
+        .get<SongResponse>(`/api/v1/songs/${songId}`)
+        .then(onSuccess)
+        .catch(onError);
     }
 
     function startStudio() {
@@ -87,7 +72,7 @@ const Studio = () => {
       <Timeline />
       <Tracks />
       <ControlBar />
-      <SaveSong />
+      <AutoSaveSong />
     </>
   );
 };

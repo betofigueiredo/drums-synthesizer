@@ -4,7 +4,7 @@ import TrackBeats from "components/studio/TrackBeats";
 import BlocksButtons from "components/studio/BlocksButtons";
 
 const Tracks = () => {
-  const tracks = useAppSelector((state) => state.studio.tracks);
+  const tracks = useAppSelector((state) => state.studio.song.tracks);
   const tracksIds = Object.keys(tracks);
 
   return (

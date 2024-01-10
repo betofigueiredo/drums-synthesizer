@@ -1,25 +1,25 @@
 import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { updateSongName } from "features/studio/studioSlice";
+import { updateSong } from "features/studio/studioSlice";
 import Input from "components/ui/Input";
 import SaveSongButton from "../SaveSongButton";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const selectedKit = useAppSelector((state) => state.studio.selectedKit);
-  const songName = useAppSelector((state) => state.studio.songName);
+  const kit = useAppSelector((state) => state.studio.song.kit);
+  const songName = useAppSelector((state) => state.studio.song.name);
 
   const onChangeName = (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
-    dispatch(updateSongName(event.target.value));
+    dispatch(updateSong({ name: event.target.value }));
   };
 
-  const onChangeKit = (
-    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {
-    // setSongName(event.target.value);
-  };
+  // const onChangeKit = (
+  //   event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  // ) => {
+  //   // setSongName(event.target.value);
+  // };
 
   return (
     <div className="fixed left-0 top-0 z-10 h-44 w-full bg-background-main pl-24">
@@ -28,11 +28,7 @@ const Header = () => {
           <Input label="Song name" value={songName} onChange={onChangeName} />
         </div>
         <div className="h-44 border-r border-gray-700 pl-12 pr-12 pt-12">
-          <Input
-            label="Kit"
-            value={selectedKit?.name || ""}
-            onChange={onChangeName}
-          />
+          <Input label="Kit" value={kit?.name || ""} onChange={onChangeName} />
         </div>
         <div className="h-44 pl-12 pr-12 pt-12">
           <SaveSongButton />

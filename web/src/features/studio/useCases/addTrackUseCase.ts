@@ -8,6 +8,7 @@ const addTrackUseCase = (
   const trackType = action.payload.trackType;
   const newTrack = {
     id: trackType,
+    order: 1, // FIXME:
     type: trackType,
     name: trackType,
     audio: "/audio/acoustic-snare-06.wav",
@@ -15,7 +16,7 @@ const addTrackUseCase = (
     muted: false,
     steps: {},
   };
-  state.tracks[trackType] = newTrack;
+  state.song.tracks[trackType] = newTrack;
 };
 
 export default addTrackUseCase;

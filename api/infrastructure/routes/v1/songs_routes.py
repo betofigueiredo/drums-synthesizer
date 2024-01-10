@@ -6,6 +6,7 @@ from infrastructure.core.database import db
 from use_cases.songs import (
     create_song_use_case,
     get_songs_use_case,
+    get_song_use_case,
 )
 
 
@@ -44,9 +45,22 @@ class SongsList(Resource):
         )
 
 
+class Song(Resource):
+    @token_required
+    def get(self, token_data, song_id):
+        user_id = token_data.get("user_id") if token_data else None
+        return get_song_use_case(
+            user_id=user_id,
+            song_id=song_id,
+            utils=Utils(),
+            repository=Repository(db),
+        )
+
+
 class SongsRoutes:
     def __init__(self, api):
         self.api = api
 
     def setup(self):
         self.api.add_resource(SongsList, "/songs")
+        self.api.add_resource(Song, "/songs/<song_id>")

@@ -1,7 +1,7 @@
 import { StudioState } from "types/studio";
 
 const removeLastBlockUseCase = (state: StudioState) => {
-  state.blocks = state.blocks - 1;
+  state.song.blocks = state.song.blocks - 1;
   // TODO: clear selected beats on last block
 };
 

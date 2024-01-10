@@ -14,8 +14,8 @@ import Bpm from "components/studio/Bpm";
 
 const ControlBar = () => {
   const dispatch = useAppDispatch();
-  const bpm = useAppSelector((state) => state.studio.bpm);
-  const blocks = useAppSelector((state) => state.studio.blocks);
+  const bpm = useAppSelector((state) => state.studio.song.bpm);
+  const blocks = useAppSelector((state) => state.studio.song.blocks);
   const [step, setStep] = useState<number>(0);
   const [loop, setLoop] = useState<boolean>(true);
   const lastStep = blocks * 4;

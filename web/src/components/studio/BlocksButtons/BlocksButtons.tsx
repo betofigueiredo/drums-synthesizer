@@ -7,7 +7,7 @@ import { faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 
 const BlocksButtons = () => {
   const dispatch = useAppDispatch();
-  const tracks = useAppSelector((state) => state.studio.tracks);
+  const tracks = useAppSelector((state) => state.studio.song.tracks);
   const numberOfTracks = Object.keys(tracks).length;
   const TRACK_HEIGHT = 56;
   const buttonHeight = numberOfTracks * TRACK_HEIGHT;

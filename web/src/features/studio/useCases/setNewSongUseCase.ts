@@ -4,9 +4,9 @@ import { StudioTrack, StudioState } from "types/studio";
 
 const setNewSongUseCase = (
   state: StudioState,
-  action: PayloadAction<{ selectedKit: Kit }>,
+  action: PayloadAction<{ kit: Kit }>,
 ) => {
-  const selectedKitTracks = action.payload.selectedKit.tracks.reduce(
+  const kitTracks = action.payload.kit.tracks.reduce(
     (acc: { [k: string]: KitTrack }, cur) => {
       acc[cur.type] = cur;
       return acc;
@@ -30,13 +30,13 @@ const setNewSongUseCase = (
 
   const tracks = song.tracks.reduce(
     (acc: { [k: string]: StudioTrack }, cur, idx: number) => {
-      const selectedKitTrack = selectedKitTracks[cur.type];
-      acc[selectedKitTrack.id] = {
-        id: selectedKitTrack.id,
+      const kitTrack = kitTracks[cur.type];
+      acc[kitTrack.id] = {
+        id: kitTrack.id,
         order: idx + 1,
-        name: selectedKitTrack.name,
-        type: selectedKitTrack.type,
-        audio: selectedKitTrack.audio,
+        name: kitTrack.name,
+        type: kitTrack.type,
+        audio: kitTrack.audio,
         volume: 1,
         muted: false,
         steps: cur.beats.reduce((acc: { [k: string]: boolean }, cur) => {
@@ -49,8 +49,8 @@ const setNewSongUseCase = (
     {},
   );
 
-  state.selectedKit = action.payload.selectedKit;
-  state.tracks = tracks;
+  state.song.kit = action.payload.kit;
+  state.song.tracks = tracks;
 };
 
 export default setNewSongUseCase;
