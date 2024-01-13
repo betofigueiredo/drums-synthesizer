@@ -23,7 +23,7 @@ const useGetUserInfo = () => {
       name: "Beto",
       email: "beto@test.com",
     };
-    setTimeout(() => dispatch(setInfo(userInfo)), 2000);
+    dispatch(setInfo(userInfo));
     // makeRequest.get("/api/v1/users/me").then(onSuccess).catch(onError);
   };
 

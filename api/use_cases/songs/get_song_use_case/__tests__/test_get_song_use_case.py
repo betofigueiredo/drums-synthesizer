@@ -5,7 +5,7 @@ from infrastructure.repositories.mock.repository_mock import RepositoryMock
 from tests.helpers import helpers
 
 
-class TestCreateSongUseCase:
+class TestGetSongUseCase:
     # TEST
     def test_invalid_user_id(self):
         repository = RepositoryMock()

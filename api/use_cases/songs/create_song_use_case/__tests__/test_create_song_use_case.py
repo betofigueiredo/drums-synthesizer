@@ -32,7 +32,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="4894f838-3093-40c7-a1e4-1ddcaadf24bb",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 0,
                 "blocks": 4,
                 "tracks": "1,2,3",
@@ -51,7 +51,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="4894f838-3093-40c7-a1e4-1ddcaadf24bb",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 100,
                 "blocks": 0,
                 "tracks": "1,2,3",
@@ -70,7 +70,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="4894f838-3093-40c7-a1e4-1ddcaadf24bb",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 100,
                 "blocks": 4,
                 "tracks": "",
@@ -89,7 +89,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="4894f838-3093-40c7-a1e4-1ddcaadf24bb",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 100,
                 "blocks": 4,
                 "tracks": "1,2,3",
@@ -108,7 +108,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="wrong_user_id",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 100,
                 "blocks": 4,
                 "tracks": "1,2,3",
@@ -131,7 +131,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="4894f838-3093-40c7-a1e4-1ddcaadf24bb",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 100,
                 "blocks": 4,
                 "tracks": "1,2,3",
@@ -158,7 +158,7 @@ class TestCreateSongUseCase:
         result = create_song_use_case(
             user_id="4894f838-3093-40c7-a1e4-1ddcaadf24bb",
             data={
-                "name": "Beto",
+                "name": "First song",
                 "bpm": 100,
                 "blocks": 4,
                 "tracks": "1,2,3",

@@ -7,3 +7,6 @@ class SongsRepositoryMock:
 
     def create(self):
         return None
+
+    def update(self):
+        return None

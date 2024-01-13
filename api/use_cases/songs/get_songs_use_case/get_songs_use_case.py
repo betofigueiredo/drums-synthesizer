@@ -10,11 +10,6 @@ def get_songs_use_case(
     repository: Repository,
 ):
     try:
-        utils.general.validate_schema(
-            schema=Schema,
-            params={"user_id": user_id},
-        )
-
         return []
 
     except HTTPException as error:

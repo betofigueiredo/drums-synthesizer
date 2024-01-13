@@ -12,9 +12,9 @@ def update_song_use_case(
     repository: Repository,
 ):
     try:
-        new_song = {**data, "user_id": user_id}
-
-        validation = utils.general.validate_schema(schema=Schema, params=new_song)
+        validation = utils.general.validate_schema(
+            schema=Schema, params={**data, "user_id": user_id, "song_id": song_id}
+        )
 
         if validation.get("error"):
             return {
@@ -30,7 +30,7 @@ def update_song_use_case(
                 "message": "Song not found.",
             }, 404
 
-        kit = repository.kits.find_by_id(kit_id=new_song.get("kit_id"))
+        kit = repository.kits.find_by_id(kit_id=str(data.get("kit_id")))
 
         if not kit:
             return {
@@ -40,10 +40,10 @@ def update_song_use_case(
 
         values_to_update = {**utils.general.only_valid_values(**data)}
 
-        # repository.songs.update(song_id=song_id, user_id=user_id, data=values_to_update)
+        repository.songs.update(song_id=song_id, user_id=user_id, data=values_to_update)
 
         updated_song = {
-            **utils.general.only_valid_values(**existing_song.serialized_basic),
+            **utils.general.only_valid_values(**existing_song.serialized),
             **utils.general.only_valid_values(**data),
         }
 
