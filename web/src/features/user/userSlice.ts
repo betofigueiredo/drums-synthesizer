@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import setInfoUseCase from "./useCases/setInfoUseCase";
 
-export type User = {
+export type UserState = {
   id: string;
   name: string;
   email: string;
   loading?: boolean;
 };
 
-const initialState: User = {
+const initialState: UserState = {
   id: "",
   name: "",
   email: "",

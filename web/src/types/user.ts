@@ -1,5 +1,6 @@
 export type User = {
-  id: string;
+  id?: string;
+  name: string;
   email: string;
 };
 
@@ -8,4 +9,8 @@ export type LoginResponse = {
     accessToken: string;
     user: User;
   };
+};
+
+export type UserResponse = {
+  data: { user: User };
 };

@@ -1,30 +1,32 @@
 import { useAppDispatch } from "./redux";
-// import { useSnackbar } from "notistack";
-// import makeRequest from "utils/makeRequest";
-import retrieveToken from "utils/retrieveToken";
+import { useSnackbar } from "notistack";
+import { AxiosError } from "axios";
+import { UserResponse } from "types/user";
 import { setInfo } from "features/user/userSlice";
+import makeRequest from "utils/makeRequest";
+import retrieveToken from "utils/retrieveToken";
+import errorHandler from "utils/errorHandler";
 
 const useGetUserInfo = () => {
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const dispatch = useAppDispatch();
 
-  // const onSuccess = (response: { data: User }) => {
-  //   const userInfo = response.data;
-  //   // setTimeout(() => dispatch(setInfo(userInfo)), 0);
-  // };
+  const onSuccess = (response: UserResponse) => {
+    const userInfo = response.data.user;
+    dispatch(setInfo(userInfo));
+    // setTimeout(() => dispatch(setInfo(userInfo)), 0);
+  };
 
-  // const onError = () => {
-  //   // enqueueSnackbar(t("alerts.error.general"), { variant: "error" });
-  // };
+  const onError = (error: AxiosError) => {
+    const errorMessage = errorHandler(error);
+    enqueueSnackbar(errorMessage, { variant: "error" });
+  };
 
   const requestUserInfo = () => {
-    const userInfo = {
-      id: "149df233-112f-4499-8b07-8b2dd96ef24c",
-      name: "Beto",
-      email: "beto@test.com",
-    };
-    dispatch(setInfo(userInfo));
-    // makeRequest.get("/api/v1/users/me").then(onSuccess).catch(onError);
+    makeRequest
+      .get<UserResponse>("/api/v1/users/me")
+      .then(onSuccess)
+      .catch(onError);
   };
 
   const updateUserLoading = () => {
