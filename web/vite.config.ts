@@ -7,6 +7,7 @@ export default defineConfig({
   server: { host: true, port: 5050 },
   resolve: {
     alias: {
+      api: "/src/api",
       components: "/src/components",
       constants: "/src/constants",
       features: "/src/features",

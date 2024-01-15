@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useAppSelector } from "hooks/redux";
 import handleLocalStorage from "utils/handleLocalStorage";
+import makeRequest from "utils/makeRequest";
+import { SongResponse } from "types/studio";
 
 const AutoSaveSong = () => {
   const { id, name, kit, bpm, blocks, tracks } = useAppSelector(
@@ -21,8 +23,32 @@ const AutoSaveSong = () => {
       console.log("  Saved on localStorage!");
     };
 
+    const onSuccess = (response: SongResponse) => {
+      // const songId = response.data.song?.id || "";
+      // dispatch(updateSong({ id: songId }));
+      // navigate(`/studio/${songId}`);
+      // setIsSaving(false);
+    };
+
+    const onError = () => {
+      // setIsSaving(false);
+      // enqueueSnackbar("Sorry, an error occurred. Try again.", {
+      //   variant: "error",
+      // });
+    };
+
     const saveOnApi = () => {
-      // TODO:
+      const song = {
+        name,
+        bpm,
+        blocks,
+        tracks: JSON.stringify(tracks),
+        kitId: kit?.id,
+      };
+      makeRequest
+        .put<SongResponse>(`/api/v1/songs/${id}`, song)
+        .then(onSuccess)
+        .catch(onError);
       console.log("  Saved on API!");
     };
 

@@ -3,7 +3,7 @@
 const snakeToCamel = (str: string) =>
   str
     .toLowerCase()
-    .replace(/[-_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
+    .replace(/[_][a-z0-9]/g, (group) => group.slice(-1).toUpperCase());
 
 const camelToSnake = (str: string) =>
   str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);

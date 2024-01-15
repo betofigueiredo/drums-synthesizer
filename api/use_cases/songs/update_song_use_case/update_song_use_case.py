@@ -38,13 +38,16 @@ def update_song_use_case(
                 "message": "Kit not found.",
             }, 400
 
-        values_to_update = {**utils.general.only_valid_values(**data)}
+        tracks = utils.general.jsonify(data.get("tracks"))
+
+        values_to_update = {**utils.general.only_valid_values(**data), "tracks": tracks}
 
         repository.songs.update(song_id=song_id, user_id=user_id, data=values_to_update)
 
         updated_song = {
             **utils.general.only_valid_values(**existing_song.serialized),
             **utils.general.only_valid_values(**data),
+            "kit": kit.serialized,
         }
 
         return {"song": updated_song}

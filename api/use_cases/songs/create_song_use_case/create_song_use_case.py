@@ -29,7 +29,9 @@ def create_song_use_case(
                 "message": "Kit not found.",
             }, 400
 
-        created_song = repository.songs.create(data=new_song)
+        tracks = utils.general.jsonify(data.get("tracks"))
+
+        created_song = repository.songs.create(data={**new_song, "tracks": tracks})
 
         return {"song": created_song.serialized}
 

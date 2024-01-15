@@ -14,7 +14,7 @@ def get_me_use_case(
         if not user:
             return {"message": "User does not exist."}, 404
 
-        return True
+        return {"user": user.serialized}
 
     except HTTPException as error:
         return HTTPException(description=str(error))

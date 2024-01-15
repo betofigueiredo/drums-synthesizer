@@ -1,4 +1,4 @@
-from flask import jsonify
+import json
 from typing import Any
 from pydantic import ValidationError
 
@@ -15,7 +15,7 @@ class General:
         return res
 
     def jsonify(self, data):
-        return jsonify(data)
+        return json.loads(data)
 
     def validate_schema(self, schema, params) -> dict[str, Any]:
         try:

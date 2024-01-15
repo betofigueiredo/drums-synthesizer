@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { setNewSong, updateSong } from "features/studio/studioSlice";
-import { Song, SongResponse } from "types/studio";
-import makeRequest from "utils/makeRequest";
+import { Song } from "types/studio";
+import { useGetSong } from "api/studioApi";
 import handleLocalStorage from "utils/handleLocalStorage";
 import Header from "components/studio/Header";
 import Timeline from "components/studio/Timeline";
@@ -15,6 +15,27 @@ const Studio = () => {
   const { songId } = useParams();
   const dispatch = useAppDispatch();
   const kits = useAppSelector((state) => state.kits.list);
+  const { data, isPending } = useGetSong({ songId });
+
+  useEffect(() => {
+    function loadSavedSong(data: Song) {
+      const savedSong = {
+        id: data.id,
+        name: data.name,
+        bpm: data.bpm,
+        blocks: data.blocks,
+        kit: data.kit,
+        tracks: data.tracks,
+      };
+      dispatch(updateSong(savedSong));
+    }
+
+    function checkSongData() {
+      if (data) loadSavedSong(data);
+    }
+
+    checkSongData();
+  }, [data, dispatch]);
 
   useEffect(() => {
     function loadNewSong() {
@@ -31,40 +52,16 @@ const Studio = () => {
       return hasSongSaved ? loadSavedSong(savedSong) : loadNewSong();
     }
 
-    function onSuccess(response: SongResponse) {
-      const data = response.data.song;
-      const savedSong = {
-        id: data.id,
-        name: data.name,
-        bpm: data.bpm,
-        blocks: data.blocks,
-        kit: data.kit,
-        tracks: JSON.parse(String(data.tracks)),
-      };
-      loadSavedSong(savedSong);
+    function checkSongId() {
+      if (!songId) getDataFromLocalStorage();
     }
 
-    function onError() {}
-
-    function getSongFromApi() {
-      makeRequest
-        .get<SongResponse>(`/api/v1/songs/${songId}`)
-        .then(onSuccess)
-        .catch(onError);
-    }
-
-    function startStudio() {
-      return songId ? getSongFromApi() : getDataFromLocalStorage();
-    }
-
-    // function shouldSaveCurrentSong() {
-    //   if (userId && !songId && localStorage) {
-    //     // save to database
-    //   }
-    // }
-
-    startStudio();
+    checkSongId();
   }, [songId, kits, dispatch]);
+
+  if (isPending) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
