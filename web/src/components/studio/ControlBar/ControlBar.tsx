@@ -9,7 +9,7 @@ import {
   faRepeat,
   faStop,
 } from "@fortawesome/free-solid-svg-icons";
-import SquareButton from "components/ui/SquareButton";
+import SquareButton from "components/ui2/SquareButton";
 import Bpm from "components/studio/Bpm";
 
 const ControlBar = () => {

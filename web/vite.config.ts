@@ -12,6 +12,7 @@ export default defineConfig({
       constants: "/src/constants",
       features: "/src/features",
       hooks: "/src/hooks",
+      lib: "/src/lib",
       pages: "/src/pages",
       styles: "/src/styles",
       types: "/src/types",

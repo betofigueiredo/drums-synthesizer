@@ -12,7 +12,10 @@ def get_me_use_case(
         user = repository.users.find_by_id(user_id=user_id)
 
         if not user:
-            return {"message": "User does not exist."}, 404
+            return {
+                "code": "USER_NOT_FOUND",
+                "message": "User does not exist.",
+            }, 404
 
         return {"user": user.serialized}
 

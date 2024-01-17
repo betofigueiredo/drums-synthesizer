@@ -59,7 +59,7 @@ const Studio = () => {
     checkSongId();
   }, [songId, kits, dispatch]);
 
-  if (isPending) {
+  if (songId && isPending) {
     return <p>Loading...</p>;
   }
 

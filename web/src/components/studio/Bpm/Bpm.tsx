@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { updateSong } from "features/studio/studioSlice";
-import Input from "components/ui/Input";
+import Input from "components/ui2/Input";
 
 const Bpm = () => {
   const dispatch = useAppDispatch();

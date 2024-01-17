@@ -1,20 +1,11 @@
-import { useEffect } from "react";
-import useGetUserInfo from "hooks/useGetUserInfo";
-import useGetKits from "hooks/useGetKits";
+import GetUser from "./GetUser";
+import GetKits from "./GetKits";
 
-const OnStartActions = () => {
-  const { getUserInfo } = useGetUserInfo();
-  const { getKits } = useGetKits();
-
-  useEffect(() => {
-    getUserInfo();
-  }, [getUserInfo]);
-
-  useEffect(() => {
-    getKits();
-  }, [getKits]);
-
-  return null;
-};
+const OnStartActions = () => (
+  <>
+    <GetUser />
+    <GetKits />
+  </>
+);
 
 export default OnStartActions;

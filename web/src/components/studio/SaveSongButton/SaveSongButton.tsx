@@ -6,7 +6,9 @@ import { updateSong } from "features/studio/studioSlice";
 import { SongResponse } from "types/studio";
 import checkUserIsLogged from "utils/checkUserIsLogged";
 import makeRequest from "utils/makeRequest";
-import Button from "components/ui/Button";
+import { Button } from "components/ui/button";
+import { Loader2 } from "lucide-react";
+// import Button from "components/ui2/Button";
 
 const SaveSongButton = () => {
   const navigate = useNavigate();
@@ -59,10 +61,13 @@ const SaveSongButton = () => {
     return null;
   }
 
-  return (
-    <Button onClick={onSave} loading={isSaving}>
-      Save to my songs
+  return isSaving ? (
+    <Button>
+      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      Saving
     </Button>
+  ) : (
+    <Button onClick={onSave}>Save to my songs</Button>
   );
 };
 

@@ -30,9 +30,9 @@ const Step = ({
     }
     const isDiffBlock = Math.floor((stepNumber - 1) / 4) % 2 !== 0;
     if (isDiffBlock) {
-      return " bg-[#565A72]";
+      return " bg-[#565A72] hover:bg-[#8f9271]";
     }
-    return " bg-[#3F435A]";
+    return " bg-[#3F435A] hover:bg-[#8f9271]";
   }
 
   function getBorder() {
