@@ -10,7 +10,19 @@ def get_songs_use_case(
     repository: Repository,
 ):
     try:
-        return []
+        validation = utils.general.validate_schema(
+            schema=Schema, params={"user_id": user_id}
+        )
+
+        if validation.get("error"):
+            return {
+                "code": "INVALID_DATA",
+                "message": f"{validation.get('error')}: {validation.get('field')}",
+            }, 400
+
+        songs = repository.songs.find_all(user_id=user_id)
+
+        return {"songs": songs}
 
     except HTTPException as error:
         return HTTPException(description=str(error))
