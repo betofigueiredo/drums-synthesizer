@@ -264,7 +264,7 @@ class TestUpdateSongUseCase:
                 "name": "My song",
                 "bpm": 100,
                 "blocks": 4,
-                "tracks": '{"id":1}',
+                "tracks": '{"b8933af4-4cf0-41ae-b9be-bb42179dcaf9":{"id":"b8933af4-4cf0-41ae-b9be-bb42179dcaf9","order":1,"name":"Crash","type":"CRASH","audio":"/audio/bvkery/crash.wav","volume":1,"muted":false,"steps":""}}',
                 "kit_id": "f551219f-da27-4d6d-9d31-907a015a5b45",
             },
             utils=utils,
