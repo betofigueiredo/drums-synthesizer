@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { UserResponse } from "types/user";
+import retrieveToken from "utils/retrieveToken";
 import makeRequest from "utils/makeRequest";
 
-export const useGetUser = ({ token }: { token: string | undefined }) => {
-  const { isPending, isError, data, error } = useQuery({
+export const useGetUser = () => {
+  const token = retrieveToken();
+  const { isPending, isError, data, error, refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
       const response = await makeRequest.get<UserResponse>("/api/v1/users/me");
@@ -11,5 +13,5 @@ export const useGetUser = ({ token }: { token: string | undefined }) => {
     },
     enabled: !!token,
   });
-  return { isPending, isError, data, error };
+  return { isPending, isError, data, error, refetch };
 };

@@ -58,7 +58,7 @@ class TestSigninUseCase:
             created_at = "CREATED_AT"
 
             @property
-            def serialized_basic(self):
+            def serialized(self):
                 return {"id": "USER_ID"}
 
         def verify_google_token(google_token: str):
@@ -85,5 +85,5 @@ class TestSigninUseCase:
 
         assert result == {
             "access_token": "ACCESS_TOKEN",
-            "user": User().serialized_basic,
+            "user": User().serialized,
         }

@@ -1,20 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { AxiosError } from "axios";
+import { useGetUser } from "api/userApi";
+import { User, LoginResponse } from "types/user";
 import errorsMessages from "constants/errorsMessages";
 import makeRequest from "utils/makeRequest";
 import handleLocalStorage from "utils/handleLocalStorage";
-import useGetUserInfo from "hooks/useGetUserInfo";
 import GoogleButton from "components/shared/GoogleButton";
-import { User, LoginResponse } from "types/user";
 
 const LoginButton = ({ type }: { type: "signup" | "signin" }) => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const { getUserInfo } = useGetUserInfo();
+  const { refetch } = useGetUser();
 
   function goToDashboard() {
-    getUserInfo();
+    refetch();
     const urlToRedirect = type === "signin" ? "/songs" : "/studio";
     navigate(urlToRedirect);
   }

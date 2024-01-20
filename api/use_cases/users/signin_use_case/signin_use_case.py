@@ -31,7 +31,7 @@ def signin_use_case(
             user_id=user.id, user_created_at=user.created_at
         )
 
-        return {"access_token": access_token, "user": user.serialized_basic}
+        return {"access_token": access_token, "user": user.serialized}
 
     except HTTPException as error:
         return HTTPException(description=str(error))

@@ -10,7 +10,7 @@ const GetUser = () => {
   const dispatch = useAppDispatch();
   const token = retrieveToken();
   const { enqueueSnackbar } = useSnackbar();
-  const { data, isError, error } = useGetUser({ token });
+  const { data, isError, error } = useGetUser();
 
   useEffect(() => {
     const updateUserLoading = () => {
