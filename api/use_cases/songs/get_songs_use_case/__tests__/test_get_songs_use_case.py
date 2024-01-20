@@ -22,12 +22,13 @@ class TestGetSongsUseCase:
     # TEST
     def test_success(self):
         def find_all_songs(user_id):
-            return [
+            song = helpers.CreateDotDict(
                 {
                     "id": "f551219f-da27-4d6d-9d31-907a015a5b45",
                     "user_id": "2a253332-f9d5-4924-9c80-7856ee71e852",
                 }
-            ]
+            )
+            return [song]
 
         repository = RepositoryMock()
         repository.songs.find_all = find_all_songs  # type: ignore

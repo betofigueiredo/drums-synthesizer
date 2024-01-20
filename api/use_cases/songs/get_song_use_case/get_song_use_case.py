@@ -29,15 +29,7 @@ def get_song_use_case(
                 "message": "Song not found.",
             }, 404
 
-        kit = repository.kits.find_by_id(kit_id=song.kit_id)
-
-        if not kit:
-            return {
-                "code": "KIT_NOT_FOUND",
-                "message": "Kit not found for this song.",
-            }, 400
-
-        return {"song": {**song.serialized, "kit": kit.serialized}}
+        return {"song": {**song.serialized}}
 
     except HTTPException as error:
         return HTTPException(description=str(error))

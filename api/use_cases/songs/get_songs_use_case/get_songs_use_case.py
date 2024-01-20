@@ -22,7 +22,7 @@ def get_songs_use_case(
 
         songs = repository.songs.find_all(user_id=user_id)
 
-        return {"songs": songs}
+        return {"songs": [song.serialized for song in songs]}
 
     except HTTPException as error:
         return HTTPException(description=str(error))

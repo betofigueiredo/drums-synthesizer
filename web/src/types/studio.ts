@@ -29,3 +29,7 @@ export type StudioState = {
 export type SongResponse = {
   data: { song: Song };
 };
+
+export type SongsResponse = {
+  data: { songs: Song[] };
+};

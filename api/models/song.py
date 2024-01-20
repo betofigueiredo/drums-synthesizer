@@ -10,7 +10,8 @@ class Song(db.Model):
     bpm = db.Column(SMALLINT)
     blocks = db.Column(SMALLINT)
     tracks = db.Column(JSON)
-    kit_id = db.Column(db.String(36))
+    kit_id = db.Column(db.String(36), db.ForeignKey("kit.id"))
+    kit = relationship("Kit", back_populates="songs", lazy="subquery")
     user_id = db.Column(db.String(36), db.ForeignKey("user.id"))
     user = relationship("User", back_populates="songs", lazy="subquery")
 
@@ -23,4 +24,5 @@ class Song(db.Model):
             "blocks": self.blocks,
             "tracks": self.tracks,
             "kit_id": self.kit_id,
+            "kit": self.kit.serialized if self.kit else None,
         }
