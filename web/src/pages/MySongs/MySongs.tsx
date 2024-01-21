@@ -10,7 +10,7 @@ const MySongs = () => {
   // }
 
   return (
-    <div className="text-center">
+    <div className="pl-12 pr-12 text-center">
       <div className="container m-auto text-left">
         <PageHeader title="My songs" />
         <div>{data?.map((song) => <SongRow key={song.id} song={song} />)}</div>

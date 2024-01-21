@@ -43,7 +43,7 @@ const Studio = () => {
     }
 
     function loadSavedSong(savedSong: Song) {
-      dispatch(updateSong(savedSong));
+      dispatch(updateSong({ ...savedSong, id: "" }));
     }
 
     function getDataFromLocalStorage() {

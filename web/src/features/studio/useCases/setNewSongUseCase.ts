@@ -51,6 +51,7 @@ const setNewSongUseCase = (
 
   state.song.kit = action.payload.kit;
   state.song.tracks = tracks;
+  state.song.id = "";
 };
 
 export default setNewSongUseCase;

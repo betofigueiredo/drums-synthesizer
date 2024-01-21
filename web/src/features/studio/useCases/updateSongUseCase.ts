@@ -6,7 +6,7 @@ const updateSongUseCase = (
   action: PayloadAction<Partial<Song>>,
 ) => {
   const { id, name, bpm, blocks, tracks, kit } = action.payload;
-  if (id) state.song.id = id;
+  if (id !== undefined) state.song.id = id;
   if (name) state.song.name = name;
   if (bpm) state.song.bpm = bpm;
   if (blocks) state.song.blocks = blocks;
