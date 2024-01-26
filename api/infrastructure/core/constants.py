@@ -1,4 +1,4 @@
-class TracksTypes:
+class TracksTypes(dict):
     CRASH = "CRASH"
     RIDE = "RIDE"
     RIDE_BELL = "RIDE_BELL"
@@ -18,6 +18,12 @@ class TracksTypes:
     SIDESTICK_SNARE = "SIDESTICK_SNARE"
     KICK = "KICK"
     STICKS = "STICKS"
+
+    def __getattr__(self, attr):
+        try:
+            return self[attr]
+        except KeyError:
+            return None
 
 
 class Constants:

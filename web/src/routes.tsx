@@ -9,6 +9,7 @@ import Studio from "pages/Studio";
 import MySongs from "pages/MySongs";
 import Kits from "pages/Kits";
 import BuyMeACoffee from "pages/BuyMeACoffee";
+import CreateKit from "pages/CreateKit";
 
 const allRoutes = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const allRoutes = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/kits", element: <Kits /> },
+      { path: "/kits/new", element: <CreateKit /> },
       { path: "/signup", element: <SignUp /> },
       { path: "/signin", element: <SignIn /> },
       { path: "/songs", element: <MySongs /> },

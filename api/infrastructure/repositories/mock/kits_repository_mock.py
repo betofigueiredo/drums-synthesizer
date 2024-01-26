@@ -4,3 +4,6 @@ class KitsRepositoryMock:
 
     def find_by_id(self):
         return None
+
+    def create(self):
+        return None

@@ -1,7 +1,8 @@
 from typing import List
 from flask_sqlalchemy import SQLAlchemy
 from models.kit import Kit
-from .queries import find_all_kits, find_kit_by_id
+from models.track import Track
+from .queries import create_kit, create_track, find_all_kits, find_kit_by_id
 
 
 class KitsRepository:
@@ -13,3 +14,9 @@ class KitsRepository:
 
     def find_by_id(self, kit_id: str | None) -> Kit | None:
         return find_kit_by_id(db=self.db, kit_id=kit_id)
+
+    def create(self, data: dict[str, str]) -> Kit:
+        return create_kit(db=self.db, data=data)
+
+    def create_track(self, data: dict[str, str]) -> Track:
+        return create_track(db=self.db, data=data)
